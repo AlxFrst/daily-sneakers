@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_31_093852) do
+ActiveRecord::Schema.define(version: 2022_05_31_095050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,21 @@ ActiveRecord::Schema.define(version: 2022_05_31_093852) do
     t.boolean "private"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "collections", force: :cascade do |t|
+    t.bigint "sneakers_id", null: false
+    t.bigint "users_id", null: false
+    t.bigint "conditions_id", null: false
+    t.bigint "status_id", null: false
+    t.decimal "price_buy"
+    t.date "buying_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["conditions_id"], name: "index_collections_on_conditions_id"
+    t.index ["sneakers_id"], name: "index_collections_on_sneakers_id"
+    t.index ["status_id"], name: "index_collections_on_status_id"
+    t.index ["users_id"], name: "index_collections_on_users_id"
   end
 
   create_table "conditions", force: :cascade do |t|
@@ -116,6 +131,10 @@ ActiveRecord::Schema.define(version: 2022_05_31_093852) do
     t.index ["users_id"], name: "index_whishlists_on_users_id"
   end
 
+  add_foreign_key "collections", "conditions", column: "conditions_id"
+  add_foreign_key "collections", "sneakers", column: "sneakers_id"
+  add_foreign_key "collections", "statuses"
+  add_foreign_key "collections", "users", column: "users_id"
   add_foreign_key "messages", "chatrooms", column: "chatrooms_id"
   add_foreign_key "messages", "users", column: "users_id"
   add_foreign_key "prices", "sneakers", column: "sneakers_id"
