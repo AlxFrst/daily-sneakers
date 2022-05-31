@@ -6,4 +6,7 @@ class SneakersController < ApplicationController
   def show
     @sneaker = Sneaker.find(params[:id])
   end
+
+  def tests
+  end
 end
