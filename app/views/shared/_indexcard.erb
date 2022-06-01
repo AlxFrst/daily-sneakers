@@ -1,10 +1,23 @@
 <div class="index-card col-3">
   <div class="index-card-image">
+  <% case sneaker.brand.downcase %>
+  <% when 'nike' %>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="" class="index-card-logo">
+  <% when 'adidas' %>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" alt="" class="index-card-logo">
+  <% when 'air jordan' %>
     <img src="https://upload.wikimedia.org/wikipedia/fr/3/37/Jumpman_logo.svg" alt="" class="index-card-logo">
-    <div class="index-card-date">28.01</div>
+  <% when 'new balance' %>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/New_Balance_logo.svg" alt="" class="index-card-logo">
+  <% when 'reebok' %>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Reebok_2019_logo.svg" alt="" class="index-card-logo">
+  <% else %>
+    <img src="" alt="" class="index-card-logo"> %>
+  <% end %>
+    <div class="index-card-date"><%= sneaker.year %></div>
   </div>
   <div class="index-card-block">
-    <h5>Nike SB Dunk Low Cow</h5>
+    <h5><%= "#{sneaker.brand} #{sneaker.model}" %></h5>
     <div class="index-card-bottom">
       <p class="index-card-price">90.00$</p>
       <div class="index-card-shared">
