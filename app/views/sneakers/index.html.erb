@@ -1,5 +1,16 @@
+<section data-controller="filter">
+  <div class="index-head">
+    <h3>Result for... </h3>
+    <button data-action="click->filter#revealContent"><i class="fa-solid fa-filter"></i>Filter</button>
+  </div>
+  <div class="index-filter" data-filter-target="content">
+    <p>bla</p>
+    <p>bli</p>
+    <p>blo</p>
+  </div>
+</section>
 <section class="row">
-  <% Sneaker.first(10).each do |sneaker| %>
+  <% Sneaker.first(15).each do |sneaker| %>
     <%= render 'shared/indexcard', sneaker: sneaker %>
   <% end %>
 </section>

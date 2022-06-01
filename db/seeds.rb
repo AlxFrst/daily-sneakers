@@ -21,6 +21,7 @@ url = "https://www.klekt.com/all?page=#{page.to_s}"
     #get year in model like model (2000)
     year = model.match(/\d{4}/)[0]
     model = model.gsub(year, "").strip.remove("\n").remove("\t").remove("(").remove(")").strip
+    img_url = detail_doc.css("img")[5].attributes["src"].value
 
     sizes = detail_doc.css(".c-price-point")
     sizes.each do |size|
@@ -29,7 +30,7 @@ url = "https://www.klekt.com/all?page=#{page.to_s}"
       p "--------------------------"
       p " #{brand} #{model} #{year} #{sku} #{size_name.to_f}"
       if Sneaker.where(reference: sku) == []
-        sneaker = Sneaker.new(brand: brand, model: model, year: year, reference: sku)
+        sneaker = Sneaker.new(brand: brand, model: model, year: year, reference: sku, imgurl: img_url)
         sneaker.save!
       else
         sneaker = Sneaker.where(reference: sku)[0]
