@@ -4,10 +4,10 @@ class CreateSneakers < ActiveRecord::Migration[6.1]
       t.string :brand
       t.string :model
       t.integer :votes
-      t.references :sizes, null: false, foreign_key: true
       t.integer :year
       t.string :color
       t.string :reference
+      t.string :gender
 
       t.timestamps
     end

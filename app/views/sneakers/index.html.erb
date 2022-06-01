@@ -1,0 +1,5 @@
+<section class="row">
+  <% Sneaker.first(10).each do |sneaker| %>
+    <%= render 'shared/indexcard', sneaker: sneaker %>
+  <% end %>
+</section>

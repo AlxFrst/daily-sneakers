@@ -1,3 +1,3 @@
 class Price < ApplicationRecord
-  belongs_to :sneaker
+  has_one :sneaker
 end
