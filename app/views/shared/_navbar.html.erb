@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light fixed-top navbar-lewagon container">
   <div class="container-fluid">
     <%= link_to "#", class: "navbar-brand" do %>
       <h1>Daily Sneakers</h1>
@@ -13,6 +13,16 @@
       <form action="" method="get" class="search">
         <div class="form__field">
           <input type="search" name="search" placeholder="Article name or keywords..." class="form__input">
+          <div class="dropdown">
+            <button class="btn dropdown-custom dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              All category
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
           <input type="submit" value="Search" class="button">
         </div>
       </form>

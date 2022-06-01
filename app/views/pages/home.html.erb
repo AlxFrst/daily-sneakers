@@ -1,1 +1,36 @@
-<h1>yooooo</h1>
+<header>
+    <div class="main-img">
+      <%= image_tag "main-img.png" %>
+    </div>
+</header>
+
+<section class="container">
+    <div class="row most-hype-card">
+    <h2>Most Hyped</h2>
+      <div class="col-sm">
+        <%= image_tag "most1.png" %>
+        <p>Nike Dunk Low « Ocean »</p>
+      </div>
+      <div class="col-sm">
+       <%= image_tag "most2.png" %>
+       <p>Travis Scott x Nike Air Max 1<br> « Baroque Brown »</p>
+      </div>
+      <div class="col-sm">
+        <%= image_tag "most3.png" %>
+        <p>Nike Dunk Low SE « Sun Club »</p>
+      </div>
+  </div>
+</section>
+<section class="up-coming">
+  <h2>Upcoming releases</h2>
+  <div class="scrollmenu">
+  </div>
+</section>
+<div class="banner" style="background-image: url(https://images.unsplash.com/photo-1530202218-5a52c6d42753?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80);">
+  <div class="container">
+    <h2>Sign up to add a sneakers <br> to your wishlist</h2>
+    <div class="nav-buttons d-flex justify-content-between">
+      <%= link_to "Sign up", new_user_registration_path, class: "signup-banner" %>
+    </div>
+  </div>
+</div>
