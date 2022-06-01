@@ -8,6 +8,5 @@ class AddInfoToUsers < ActiveRecord::Migration[6.1]
     add_column :users, :wallet, :integer
     add_reference :users, :sizes, null: false, foreign_key: true
     add_column :users, :birthdate, :date
-    add_reference :users, :genders, null: false, foreign_key: true
   end
 end
