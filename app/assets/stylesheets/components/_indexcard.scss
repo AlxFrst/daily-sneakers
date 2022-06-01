@@ -1,0 +1,50 @@
+.index-card {
+  border-radius: 4px;
+  width: 40vh;
+  background-color: white;
+  margin: 5vh;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  padding: 0;
+  h5 {
+    margin-top: 3vh;
+    text-align: center;
+  }
+}
+
+.index-card-image {
+  background-image: url('https://u4n2q9h4.rocketcdn.me/wp-content/images/2021/12/a-ma-maniere-air-jordan-2-do7216-100-pic100-1100x620.jpg');
+  background-position: center;
+  background-size: cover;
+  height: 25vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.index-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1vh;
+  margin-top: 8vh;
+  color: rgba(164, 158, 158, 0.5);
+  p {
+    margin-bottom: 0vh;
+  }
+  i {
+    margin-left: 1vh;
+  }
+}
+
+.index-card-logo {
+  position: relative;
+  height: 4vh;
+  left: 1vh;
+  top: 1vh;
+}
+
+.index-card-date {
+  position: relative;
+  right: 2vh;
+  top: 1.5vh;
+  color: rgba(164, 158, 158, 1);
+  font-size: 2vh;
+}
