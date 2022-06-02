@@ -81,7 +81,7 @@ released_total_pages.times do |page|
       p "#{brand} #{model} #{reference} already exists"
     end
   end
-  p "------------------"
-  p "SEED FINISH | #{Sneaker.count} sneakers created"
-  p "------------------"
 end
+p "------------------"
+p "SEED FINISH | #{Sneaker.count} sneakers created"
+p "------------------"
