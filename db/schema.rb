@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2022_06_01_204113) do
 
   # These are extensions that must be enabled in order to support this database
@@ -58,10 +59,10 @@ ActiveRecord::Schema.define(version: 2022_06_01_204113) do
     t.float "price"
     t.string "market"
     t.float "size", null: false
-    t.bigint "sneakers_id", null: false
+    t.bigint "sneaker_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["sneakers_id"], name: "index_prices_on_sneakers_id"
+    t.index ["sneaker_id"], name: "index_prices_on_sneaker_id"
   end
 
   create_table "sneakers", force: :cascade do |t|
@@ -118,7 +119,7 @@ ActiveRecord::Schema.define(version: 2022_06_01_204113) do
   add_foreign_key "collections", "users", column: "users_id"
   add_foreign_key "messages", "chatrooms", column: "chatrooms_id"
   add_foreign_key "messages", "users", column: "users_id"
-  add_foreign_key "prices", "sneakers", column: "sneakers_id"
+  add_foreign_key "prices", "sneakers"
   add_foreign_key "whishlists", "sneakers", column: "sneakers_id"
   add_foreign_key "whishlists", "users", column: "users_id"
 end

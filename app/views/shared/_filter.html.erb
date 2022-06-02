@@ -1,0 +1,26 @@
+<h5>Brand</h5>
+<div class="index-filter-brands">
+  <span data-action="click->filter#selectOption">Nike</span>
+  <span data-action="click->filter#selectOption">Air Jordan</span>
+  <span data-action="click->filter#selectOption">Adidas</span>
+  <span data-action="click->filter#selectOption">New Balance</span>
+  <span data-action="click->filter#selectOption">Reebok</span>
+</div>
+<h5>Price</h5>
+<div class="index-filter-prices">
+  <div class="range-slider">
+    <span class="d-flex justify-content-between">
+      <input type="number" value="200" min="0" max="10000" readonly/><i>€</i>
+      <input type="number" value="5000" min="0" max="10000" readonly/><i>€</i>
+    </span>
+    <input value="200" min="0" max="10000" step="1" type="range"/>
+    <input value="5000" min="0" max="10000" step="1" type="range"/>
+  </div>
+</div>
+<h5>Sellers</h5>
+<div class="index-filter-sellers">
+  <span data-action="click->filter#selectOption">StockX</span>
+  <span data-action="click->filter#selectOption">Wethenew</span>
+  <span data-action="click->filter#selectOption">Klekt</span>
+</div>
+<button type="submit" data-action="click->filter#submitFilter">Apply filter</button>
