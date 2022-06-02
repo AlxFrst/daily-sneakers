@@ -22,8 +22,7 @@
 }
 .up-coming{
   background-color: #DEDEDE;
-  height: 500px;
-
+  height: 600px;
 
   h2{
     margin: 30px;
@@ -37,6 +36,58 @@
     font-size: 18px;
   }
 }
+.upcoming-card {
+  border-radius: 4px;
+  width: 35vh;
+  background-color: white;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  padding: 0;
+  margin: 0 20px;
+  h5 {
+    margin-top: 3vh;
+    text-align: center;
+  }
+}
+
+.upcoming-card-image {
+  background-image: url('https://u4n2q9h4.rocketcdn.me/wp-content/images/2021/12/a-ma-maniere-air-jordan-2-do7216-100-pic100-1100x620.jpg');
+  background-position: center;
+  background-size: cover;
+  height: 25vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.upcoming-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1vh;
+  margin-top: 8vh;
+  color: rgba(164, 158, 158, 0.5);
+  p {
+    margin-bottom: 0vh;
+  }
+  i {
+    margin-left: 1.5vh;
+    font-size: 20px;
+  }
+}
+
+.upcoming-card-logo {
+  position: relative;
+  height: 4vh;
+  left: 1vh;
+  top: 1vh;
+}
+
+.upcoming-card-date {
+  position: relative;
+  right: 2vh;
+  top: 1.5vh;
+  color: rgba(164, 158, 158, 1);
+  font-size: 2vh;
+}
+
 .banner {
   background-size: cover;
   background-position: center;
@@ -50,13 +101,15 @@
   font-size: 40px;
   font-weight: bold;
 }
-.signup {
+.signup-banner {
   background-color: $third-color;
   color: black!important;
+  font-size: 22px;
   text-decoration: none;
   border-radius: 6%;
-  padding: 10px 15px;
-  margin: 15px;
+  padding: 15px 30px;
+  margin-top: 40px;
+  margin-left: 10px;
   transition: transform .2s;
   &:hover{
     transform: scale(1.1);

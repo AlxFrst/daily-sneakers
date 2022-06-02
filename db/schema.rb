@@ -43,6 +43,12 @@ ActiveRecord::Schema.define(version: 2022_06_01_111653) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "genders", force: :cascade do |t|
+    t.string "type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text "content"
     t.bigint "users_id", null: false
@@ -78,10 +84,12 @@ ActiveRecord::Schema.define(version: 2022_06_01_111653) do
     t.integer "year"
     t.string "color"
     t.string "reference"
+    t.bigint "genders_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "imgurl"
     t.bigint "size_id"
+    t.index ["genders_id"], name: "index_sneakers_on_genders_id"
     t.index ["size_id"], name: "index_sneakers_on_size_id"
   end
 
@@ -107,7 +115,9 @@ ActiveRecord::Schema.define(version: 2022_06_01_111653) do
     t.integer "wallet"
     t.bigint "sizes_id", null: false
     t.date "birthdate"
+    t.bigint "genders_id", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["genders_id"], name: "index_users_on_genders_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["sizes_id"], name: "index_users_on_sizes_id"
   end
@@ -129,7 +139,9 @@ ActiveRecord::Schema.define(version: 2022_06_01_111653) do
   add_foreign_key "messages", "chatrooms", column: "chatrooms_id"
   add_foreign_key "messages", "users", column: "users_id"
   add_foreign_key "prices", "sneakers", column: "sneakers_id"
+  add_foreign_key "sneakers", "genders", column: "genders_id"
   add_foreign_key "sneakers", "sizes"
+  add_foreign_key "users", "genders", column: "genders_id"
   add_foreign_key "users", "sizes", column: "sizes_id"
   add_foreign_key "whishlists", "sneakers", column: "sneakers_id"
   add_foreign_key "whishlists", "users", column: "users_id"
