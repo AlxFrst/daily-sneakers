@@ -2,44 +2,37 @@
 Sneaker.destroy_all
 Price.destroy_all
 
-# Sneakers to database
-page = 1
-url = "https://www.klekt.com/all?page=#{page.to_s}"
-3.times do |i|
-  require "Nokogiri"
-  require "open-uri"
+p Date.today
 
-  doc = Nokogiri::HTML(URI.open(url))
-  doc.css(".pod-link").each do |item|
-    link = item.attributes["href"].value
-    detail_link = "https://www.klekt.com/#{link}"
-    detail_doc = Nokogiri::HTML(URI.open(detail_link))
-    details = detail_doc.css(".c-pdp-info")
-    sku = details.css("span")[1].text
-    brand = detail_doc.css(".u-letter-spacing--normal")[2].text
-    model = detail_doc.css(".u-title")[0].text.gsub(brand, "").strip.remove("\n").remove("\t")
-    #get year in model like model (2000)
-    year = model.match(/\d{4}/)[0]
-    model = model.gsub(year, "").strip.remove("\n").remove("\t").remove("(").remove(")").strip
-    img_url = detail_doc.css("img")[5].attributes["src"].value
+# Sneakers database
+require "Nokogiri"
+require "open-uri"
 
-    sizes = detail_doc.css(".c-price-point")
-    sizes.each do |size|
-      size_name = size.css("span")[0].text.remove("US").remove("\t").remove("\r").strip
-      size_price = size.css("span")[2].text.remove("€")
-      p "--------------------------"
-      p " #{brand} #{model} #{year} #{sku} #{size_name.to_f}"
-      if Sneaker.where(reference: sku) == []
-        sneaker = Sneaker.new(brand: brand, model: model, year: year, reference: sku, imgurl: img_url)
-        sneaker.save!
-      else
-        sneaker = Sneaker.where(reference: sku)[0]
-      end
-      p sneaker.id
-      price = Price.new(timestamp: Time.now, price: size_price.to_f, size: size_name.to_f, market: 'Klekt')
-      price.sneakers_id = sneaker.id
-      price.save!
+# ALREADY RELEASED
+released_pages = 1
+released_url = "https://lussofootwear.com/popular/mens?page=#{released_pages.to_s}"
+released_doc = Nokogiri::HTML(URI.open(released_url))
+released_total_pages = released_doc.css(".list-reset").css("li")[-2].text.to_i
+
+released_total_pages.times do |page|
+  p page + 1
+  current_page = Nokogiri::HTML(URI.open("https://lussofootwear.com/popular/mens?page=#{page + 1}"))
+  current_page.css(".aero-listing-card").each do |sneaker|
+    released_links = "https://lussofootwear.com#{sneaker.attribute("href").value}"
+    released_details = Nokogiri::HTML(URI.open(released_links))
+    brand = released_details.css(".aero-product__manufacturer").text.strip
+    model = released_details.css(".aero-product__title").text.strip.gsub(brand, "").strip
+    color = released_details.css(".aero-tab").css(".text-left").css("span")[15].text
+    reference = released_details.css(".aero-tab").css(".text-left").css("span")[7].text.strip
+    img_url = released_details.css(".relative").css(".w-full.block.mx-auto.overflow-x-scroll.scrolling-touch.whitespace-nowrap.align-top").css("img")[0].attribute("src").value
+    released_date = Date.parse(released_details.css(".aero-tab").css(".text-left").css("span")[3].text.strip) rescue nil
+
+    if Sneaker.where(reference: reference) == []
+      p "#{brand} #{model} #{reference}"
+      Sneaker.create!(brand: brand, model: model, color: color, reference: reference, imgurl: img_url, release: released_date || Date.today)
+      p "created"
+    else
+      p "already exists"
     end
   end
-  page += 1
 end
