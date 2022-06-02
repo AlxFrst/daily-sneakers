@@ -43,6 +43,12 @@ ActiveRecord::Schema.define(version: 2022_06_01_204113) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "genders", force: :cascade do |t|
+    t.string "type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text "content"
     t.bigint "users_id", null: false
@@ -98,7 +104,9 @@ ActiveRecord::Schema.define(version: 2022_06_01_204113) do
     t.string "coutry"
     t.integer "wallet"
     t.date "birthdate"
+    t.bigint "genders_id", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["genders_id"], name: "index_users_on_genders_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
