@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_01_111653) do
+ActiveRecord::Schema.define(version: 2022_06_01_204113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,36 +61,26 @@ ActiveRecord::Schema.define(version: 2022_06_01_111653) do
 
   create_table "prices", force: :cascade do |t|
     t.date "timestamp"
-    t.bigint "sneakers_id", null: false
     t.decimal "price"
     t.string "market"
+    t.float "size", null: false
+    t.bigint "sneakers_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["sneakers_id"], name: "index_prices_on_sneakers_id"
-  end
-
-  create_table "sizes", force: :cascade do |t|
-    t.float "US"
-    t.float "EU"
-    t.float "UK"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "sneakers", force: :cascade do |t|
     t.string "brand"
     t.string "model"
     t.integer "votes"
-    t.integer "year"
     t.string "color"
     t.string "reference"
-    t.bigint "genders_id", null: false
+    t.string "gender"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "imgurl"
-    t.bigint "size_id"
-    t.index ["genders_id"], name: "index_sneakers_on_genders_id"
-    t.index ["size_id"], name: "index_sneakers_on_size_id"
+    t.date "release"
   end
 
   create_table "statuses", force: :cascade do |t|
@@ -113,13 +103,11 @@ ActiveRecord::Schema.define(version: 2022_06_01_111653) do
     t.string "nickname"
     t.string "coutry"
     t.integer "wallet"
-    t.bigint "sizes_id", null: false
     t.date "birthdate"
     t.bigint "genders_id", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["genders_id"], name: "index_users_on_genders_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["sizes_id"], name: "index_users_on_sizes_id"
   end
 
   create_table "whishlists", force: :cascade do |t|
@@ -139,10 +127,6 @@ ActiveRecord::Schema.define(version: 2022_06_01_111653) do
   add_foreign_key "messages", "chatrooms", column: "chatrooms_id"
   add_foreign_key "messages", "users", column: "users_id"
   add_foreign_key "prices", "sneakers", column: "sneakers_id"
-  add_foreign_key "sneakers", "genders", column: "genders_id"
-  add_foreign_key "sneakers", "sizes"
-  add_foreign_key "users", "genders", column: "genders_id"
-  add_foreign_key "users", "sizes", column: "sizes_id"
   add_foreign_key "whishlists", "sneakers", column: "sneakers_id"
   add_foreign_key "whishlists", "users", column: "users_id"
 end
