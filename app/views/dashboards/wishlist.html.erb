@@ -1,0 +1,63 @@
+<div class="container custom-margin">
+  <div class="d-flex justify-content-between">
+    <p>My wishlist</p>
+    <div class="btn-group nav-dashboard" role="group" aria-label="Basic outlined example">
+      <%= link_to 'Wishlist', wishlist_path, class: "btn btn-outline-secondary"%>
+      <%= link_to 'Collection', collection_path, class: "btn btn-outline-secondary"%>
+      <%= link_to 'Profile', profile_path, class: "btn btn-outline-secondary"%>
+    </div>
+  </div>
+  <h2>999,99€</h2>
+  <%= image_tag"graph-dashboard", class:"mt-5" %>
+  <div class="d-flex mt-5">
+    <h4>Sneakers</h4>
+  </div>
+  <div class="dashboard-table">
+      <table class="table table-hover">
+      <thead>
+        <tr>
+          <th class="justify-text">Model</th>
+          <th>Expected price</th>
+          <th>Release date</th>
+          <th>Actual price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="justify-text"><%= image_tag "nike.svg", class:"logo-rounded" %> Nike air jordan 1 Travis Scott</td>
+          <td>150€</td>
+          <td>27/03/2022</td>
+          <td>1000€</td>
+          <td><i class="fas fa-pen"></i></td>
+          <td><i class="fas fa-trash"></i></td>
+        </tr>
+        <tr>
+          <td class="justify-text"><%= image_tag "adidas.svg", class:"logo-rounded" %> Yezzy 350 V2 Bred</td>
+          <td>300€</td>
+          <td>12/07/2021</td>
+          <td>400€</td>
+          <td><i class="fas fa-pen"></i></td>
+          <td><i class="fas fa-trash"></i></td>
+        </tr>
+        <tr>
+          <td class="justify-text"><%= image_tag "nike.svg", class:"logo-rounded" %> Nike air jordan 1 Travis Scott</td>
+          <td>150€</td>
+          <td>27/03/2022</td>
+          <td>1000€</td>
+          <td><i class="fas fa-pen"></i></td>
+          <td><i class="fas fa-trash"></i></td>
+        </tr>
+        <tr>
+          <td class="justify-text"><%= image_tag "adidas.svg", class:"logo-rounded" %> Yezzy 350 V2 Bred</td>
+          <td>300€</td>
+          <td>12/07/2021</td>
+          <td>400€</td>
+          <td><i class="fas fa-pen"></i></td>
+          <td><i class="fas fa-trash"></i></td>
+        </tr>
+
+
+      </tbody>
+    </table>
+  </div>
+</div>

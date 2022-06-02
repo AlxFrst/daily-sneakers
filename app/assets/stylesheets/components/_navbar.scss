@@ -1,6 +1,11 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background-color: transparent;
+  transition: 0.5s background-color ease;
+}
+.navbar-lewagon-white {
+  background-color: white;
+  border-bottom: 1px solid #C4C4C4;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +14,142 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+.nav-buttons {
+  .signup {
+    background-color: $third-color;
+    color: black!important;
+    text-decoration: none;
+    border-radius: 6%;
+    padding: 10px 15px;
+    margin: 15px;
+    transition: transform .2s;
+    &:hover{
+      transform: scale(1.1);
+    }
+  }
+  .login {
+    background-color: black;
+    color: white!important;
+    text-decoration: none;
+    border-radius: 6%;
+    padding: 10px 15px;
+    margin: 15px;
+    transition: transform .2s;
+    &:hover{
+      transform: scale(1.1);
+      color: $secondary-color;
+    }
+  }
+}
+
+.align {
+  display: grid;
+  place-items: center;
+}
+
+.grid {
+  margin-left: 370px;
+  margin-right: auto;
+  max-width: 20rem;
+  width: 90%;
+}
+
+/* modules/button.css */
+
+.button {
+  background-color: black;
+  color: white;
+  padding: var(--searchInputButtonPaddingVertical) var(--searchInputButtonPaddingHorizontal);
+  transition: 0.3s;
+}
+
+.button:focus,
+.button:hover {
+  background-color:$third-color;
+  color: black;
+}
+
+/* modules/form.css */
+
+::placeholder {
+  color: #42454e;
+}
+
+input {
+  appearance: none;
+  border: none;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+}
+
+input[type="search"] {
+  appearance: textfield;
+  box-sizing: content-box;
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  appearance: none;
+}
+
+input[type="submit"] {
+  cursor: pointer;
+}
+
+.form__field {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.form__input {
+  flex-grow: 1;
+}
+
+/* modules/search.css */
+
+:root {
+  --searchBackgroundColor: #42454e;
+  --searchBorderRadius: .125rem;
+  --searchFontSize: .75rem;
+  --searchPadding: .5rem;
+
+  --searchInputBorderRadius: .125rem;
+
+  --searchInputSearchBackgroundColor: #fff;
+  --searchInputSearchColor: #42454e;
+  --searchInputSearchPaddingHorizontal: .5rem;
+  --searchInputSearchPaddingVertical: .375rem;
+
+  --searchInputButtonBackgroundColor: #1bba9a;
+  --searchInputButtonColor: #fff;
+  --searchInputButtonFontWeight: bold;
+  --searchInputButtonPaddingHorizontal: .625rem;
+  --searchInputButtonPaddingVertical: .375rem;
+  --searchInputButtonHoverBackgroundColor: #189e83;
+}
+
+.search {
+  background-color: white;
+  width: 450px;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.search input[type="search"],
+.search input[type="submit"] {
+  border-radius: 8px;
+}
+
+.search input[type="search"] {
+  background-color: #F2F4F8;
+  color: black;
+  padding: 10px 15px;
+}
+.dropdown-custom{
+  border: solid 2px #F2F4F8;
 }
