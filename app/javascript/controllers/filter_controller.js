@@ -8,10 +8,6 @@ export default class extends Controller {
   }
 
   revealContent() {
-    if (this.contentTarget.style.display == "none") {
-      this.contentTarget.style.display = "block";
-    } else {
-      this.contentTarget.style.display = "none";
-    }
+    this.contentTarget.classList.toggle('d-none');
   }
 }
