@@ -14,3 +14,9 @@ ActiveStorage.start()
 
 import "controllers"
 import "bootstrap"
+
+import { priceSlider } from "../channels/price_slider";
+
+document.addEventListener('turbolinks:load', () => {
+  priceSlider();
+})

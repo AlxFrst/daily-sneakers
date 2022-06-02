@@ -19,7 +19,7 @@
   <div class="index-card-block">
     <h5><%= "#{sneaker.brand} #{sneaker.model}" %></h5>
     <div class="index-card-bottom">
-      <p class="index-card-price"><%= Price.where(sneakers_id: sneaker.id).map { |i| i.price.to_i }.min { |a, b| a<=>b} %>$</p>
+      <p class="index-card-price"><%= sneaker.prices.map { |i| i.price.to_i }.max %>$</p>
       <div class="index-card-shared">
         <i class="fa-solid fa-heart"></i>
         <i class="fa-solid fa-share-nodes"></i>

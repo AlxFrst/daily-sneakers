@@ -5,7 +5,7 @@ class CreatePrices < ActiveRecord::Migration[6.1]
       t.decimal :price
       t.string :market
       t.float :size, null: false
-      t.references :sneakers, null: false, foreign_key: true
+      t.references :sneaker, null: false, foreign_key: true
 
       t.timestamps
     end

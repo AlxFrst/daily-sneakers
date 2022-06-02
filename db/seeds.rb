@@ -2,13 +2,13 @@
 Sneaker.destroy_all
 Price.destroy_all
 
+require "Nokogiri"
+require "open-uri"
+
 # Sneakers to database
 page = 1
 url = "https://www.klekt.com/all?page=#{page.to_s}"
 3.times do |i|
-  require "Nokogiri"
-  require "open-uri"
-
   doc = Nokogiri::HTML(URI.open(url))
   doc.css(".pod-link").each do |item|
     link = item.attributes["href"].value
@@ -37,7 +37,7 @@ url = "https://www.klekt.com/all?page=#{page.to_s}"
       end
       p sneaker.id
       price = Price.new(timestamp: Time.now, price: size_price.to_f, size: size_name.to_f, market: 'Klekt')
-      price.sneakers_id = sneaker.id
+      price.sneaker = sneaker
       price.save!
     end
   end

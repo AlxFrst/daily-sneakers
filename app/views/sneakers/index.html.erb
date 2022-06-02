@@ -8,7 +8,7 @@
   </div>
 </section>
 <section class="row">
-  <% Sneaker.first(15).each do |sneaker| %>
+  <% @sneakers.each do |sneaker| %>
     <%= render 'shared/indexcard', sneaker: sneaker %>
   <% end %>
 </section>
