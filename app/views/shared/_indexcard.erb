@@ -1,5 +1,5 @@
 <div class="index-card col-3">
-  <div class="index-card-image">
+  <div class="index-card-image" style="background-image: url('http://www.klekt.com<%= sneaker.imgurl %>');">
   <% case sneaker.brand.downcase %>
   <% when 'nike' %>
     <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="" class="index-card-logo">
@@ -19,7 +19,7 @@
   <div class="index-card-block">
     <h5><%= "#{sneaker.brand} #{sneaker.model}" %></h5>
     <div class="index-card-bottom">
-      <p class="index-card-price">90.00$</p>
+      <p class="index-card-price"><%= Price.where(sneakers_id: sneaker.id).map { |i| i.price.to_i }.min { |a, b| a<=>b} %>$</p>
       <div class="index-card-shared">
         <i class="fa-solid fa-heart"></i>
         <i class="fa-solid fa-share-nodes"></i>
