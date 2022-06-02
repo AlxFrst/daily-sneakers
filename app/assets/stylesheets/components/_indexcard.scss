@@ -1,18 +1,17 @@
 .index-card {
-  border-radius: 4px;
+  border-radius: 8px;
   width: 40vh;
   background-color: white;
   margin: 5vh;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   padding: 0;
   h5 {
-    margin-top: 3vh;
+    margin-top: 5vh;
     text-align: center;
   }
 }
 
 .index-card-image {
-  background-image: url('https://u4n2q9h4.rocketcdn.me/wp-content/images/2021/12/a-ma-maniere-air-jordan-2-do7216-100-pic100-1100x620.jpg');
   background-position: center;
   background-size: cover;
   height: 25vh;
@@ -21,11 +20,13 @@
 }
 
 .index-card-bottom {
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0 1vh;
-  margin-top: 8vh;
-  color: rgba(164, 158, 158, 0.5);
+  padding: 0 2vh;
+  position: absolute;
+  bottom: 0.3em;
+  color: rgba(164, 158, 158, 0.7);
   p {
     margin-bottom: 0vh;
   }
@@ -47,4 +48,32 @@
   top: 1.5vh;
   color: rgba(164, 158, 158, 1);
   font-size: 2vh;
+}
+
+.index-head {
+  display: flex;
+  justify-content: space-between;
+  button {
+    /* White */
+    background: #FFFFFF;
+    /* Gray/300 */
+    border: 1px solid #D0D5DD;
+    /* Shadow/xs */
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px;
+    padding: 0 4vh;
+    i {
+      margin-right: 2vh;
+    }
+  }
+}
+
+.index-filter {
+  display: none;
+  margin-top: 1em;
+  border-top: 0.03em solid rgba(0, 0, 0, 0.25);
+}
+
+.index-card-block {
+  height: 15vh;
 }
