@@ -1,0 +1,39 @@
+.custom-margin{
+  margin-top: 150px;
+}
+.nav-dashboard{
+  button{
+    padding:0 20px;
+    list-style: none;
+  }
+}
+.dashboard-table{
+  .table {
+    margin: 40px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 40px auto;
+  }
+  tbody td{
+    height: 65px;
+    vertical-align: middle;
+    color:#252733;
+  }
+  th{
+    color: #667085;
+    font-weight: 500;
+  }
+  .red{
+    color: #ff0000;
+  }
+  .green{
+    color: #34A853;
+  }
+}
+.logo-rounded{
+  width: 40px;
+  margin-right: 10px;
+}
+.justify-text{
+  text-align: justify!important;
+}
