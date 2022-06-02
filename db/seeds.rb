@@ -83,5 +83,5 @@ released_total_pages.times do |page|
   end
 end
 p "------------------"
-p "SEED FINISH | #{Sneaker.count} sneakers created"
+p "SEED FINISH | #{Sneaker.count} sneakers created"
 p "------------------"
