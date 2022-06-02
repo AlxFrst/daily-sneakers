@@ -1,0 +1,108 @@
+.show-page {
+  margin-top: 120px;
+
+  .sneaker-img {
+    width: 100%;
+    height: auto;
+  }
+
+  .right-side {
+    align-self: center;
+    padding: 75px;
+  }
+
+  .price-history {
+    margin-bottom: 60px;
+    .graph {
+      width: 100%;
+      height: auto;
+    }
+
+    h4{
+        font-weight: bold;
+        color: $secondary-color;
+    }
+  }
+
+  .title {
+    .brand {
+      font-size: 1.7em;
+      font-weight: bold;
+      color: $secondary-color;
+    }
+    .color {
+      font-size: 1.1em;
+      font-weight: bold;
+      color: $secondary-color;
+    }
+  }
+
+  .header {
+    margin-bottom: 60px;
+  }
+
+  .price-comparator {
+    margin-bottom: 60px;
+    .table {
+      margin: 40px;
+      width: 60%;
+    text-align: center;
+    vertical-align: middle;
+    margin: auto;
+    thead{
+        color: $secondary-color;
+        font-size: 0.8em;
+    }
+    }
+  }
+
+  .best-price {
+    margin-bottom: 25px;
+    .price {
+      font-size: 1.9em;
+      font-weight: bold;
+      color: $secondary-color;
+      margin: 0;
+      align-self: center;
+    }
+    .market-btn {
+      margin: 0;
+      align-self: center;
+      text-decoration: none;
+      background-color: #eef1f4;
+      padding: 11px;
+      border-radius: 6px;
+      i {
+        color: black;
+      }
+    }
+  }
+
+  .information {
+      p{
+        margin: 3px;
+      }
+    .dash-buttons {
+      margin: 0;
+      border-radius: 6px;
+      margin-top: 25px;
+      padding: 11px;
+      .wishlist {
+        background-color: $third-color;
+        padding: 11px;
+        border-radius: 6px;
+        text-decoration: none;
+        color: $secondary-color;
+        font-weight: bold;
+      }
+      .collection {
+        background-color: $secondary-color;
+        padding: 11px;
+        border-radius: 6px;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+      }
+    }
+  }
+}
