@@ -85,7 +85,8 @@ p "GETTING PRICES"
 
 Sneaker.all.each do |sneaker|
   p sneaker
-  price = Price.new(timestamp: Time.now, price: rand(100..1000), market: "Lusso", size: 4)
+  market = ["Klekt", "StockX", "Wethenew"]
+  price = Price.new(timestamp: Time.now, price: rand(100..1000), market: market.sample, size: 4)
   price.sneaker = sneaker
   price.save!
 end
