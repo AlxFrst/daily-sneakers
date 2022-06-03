@@ -1,6 +1,10 @@
 <section data-controller="filter" class="container custom-margin">
   <div class="index-head mb-3">
-    <h3>Result for... </h3>
+  <% if @sneakers.count.is_a? Integer %>
+    <h3> <%= @sneakers.count %> Results</h3>
+  <% else %>
+    <h3> <%= @sneakers.count.keys.count %> Results</h3>
+  <% end %>
     <button data-action="click->filter#revealContent"><i class="fas fa-filter"></i>Filter</button>
   </div>
   <div class="index-filter d-none" data-filter-target="content">
@@ -9,11 +13,11 @@
 </section>
 <div class="container">
   <section class="row">
-    <% @sneakers.each do |sneaker| %>
+    <% @sneakers_page.each do |sneaker| %>
         <%= render 'shared/indexcard', sneaker: sneaker %>
     <% end %>
     <div class="index-pagination">
-      <%= paginate @sneakers %>
+      <%= paginate @sneakers_page %>
     </div>
   </section>
 </div>

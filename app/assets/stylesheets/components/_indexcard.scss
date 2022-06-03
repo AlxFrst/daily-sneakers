@@ -31,31 +31,31 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0 2vh;
+  padding: 0 16px;
   position: absolute;
   bottom: 0.3em;
   color: rgba(164, 158, 158, 0.7);
   p {
-    margin-bottom: 0vh;
+    margin-bottom: 0;
   }
   i {
-    margin-left: 1vh;
+    margin-left: 8px;
   }
 }
 
 .index-card-logo {
   position: relative;
-  height: 4vh;
-  left: 1vh;
-  top: 1vh;
+  height: 28px;
+  left: 8px;
+  top: 8px;
 }
 
 .index-card-date {
   position: relative;
-  right: 2vh;
-  top: 1.5vh;
+  right: 16px;
+  top: 12px;
   color: rgba(164, 158, 158, 1);
-  font-size: 2vh;
+  font-size: 16px;
 }
 
 .index-head {
@@ -71,11 +71,11 @@
     border-radius: 8px;
     padding: 0 4vh;
     i {
-      margin-right: 2vh;
+      margin-right: 16px;
     }
   }
 }
 
 .index-card-block {
-  height: 15vh;
+  height: 110px;
 }
