@@ -45,7 +45,7 @@
   padding: 0;
   margin: 0 20px;
   h5 {
-    margin-top: 3vh;
+    margin-top: 40px;
     text-align: center;
   }
 }
@@ -65,21 +65,25 @@
 .upcoming-card-image {
   background-position: center;
   background-size: cover;
+  border-radius: 8px 8px 0 0;
   height: 200px;
   display: flex;
   justify-content: space-between;
 }
 
 .upcoming-card-bottom {
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0 1vh;
+  padding: 0 16px;
+  position: absolute;
+  bottom: 0.3em;
   color: rgba(164, 158, 158, 0.5);
   p {
-    margin-bottom: 0vh;
+    margin-bottom: 0;
   }
   i {
-    margin-left: 1.5vh;
+    margin-left: 8px;
     font-size: 20px;
   }
 }
