@@ -1,5 +1,5 @@
 <h5>Brand</h5>
-<div class="index-filter-brands">
+<div class="index-filter-brands mt-3 mb-3">
   <span data-action="click->filter#selectOption">Nike</span>
   <span data-action="click->filter#selectOption">Air Jordan</span>
   <span data-action="click->filter#selectOption">Adidas</span>
@@ -18,9 +18,11 @@
   </div>
 </div>
 <h5>Sellers</h5>
-<div class="index-filter-sellers">
-  <span data-action="click->filter#selectOption">StockX</span>
-  <span data-action="click->filter#selectOption">Wethenew</span>
-  <span data-action="click->filter#selectOption">Klekt</span>
+<div class="d-flex justify-content-between index-filter-sellers mt-3 mb-5">
+  <div>
+    <span data-action="click->filter#selectOption">StockX</span>
+    <span data-action="click->filter#selectOption">Wethenew</span>
+    <span data-action="click->filter#selectOption">Klekt</span>
+  </div>
+  <button class="apply-filter-btn" type="submit" data-action="click->filter#submitFilter">Apply filter</button>
 </div>
-<button type="submit" data-action="click->filter#submitFilter">Apply filter</button>
