@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2022_06_01_204113) do
+ActiveRecord::Schema.define(version: 2022_06_02_175656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,18 +23,18 @@ ActiveRecord::Schema.define(version: 2022_06_01_204113) do
   end
 
   create_table "collections", force: :cascade do |t|
-    t.bigint "sneakers_id", null: false
-    t.bigint "users_id", null: false
-    t.bigint "conditions_id", null: false
+    t.bigint "sneaker_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "condition_id", null: false
     t.bigint "status_id", null: false
     t.decimal "price_buy"
     t.date "buying_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["conditions_id"], name: "index_collections_on_conditions_id"
-    t.index ["sneakers_id"], name: "index_collections_on_sneakers_id"
+    t.index ["condition_id"], name: "index_collections_on_condition_id"
+    t.index ["sneaker_id"], name: "index_collections_on_sneaker_id"
     t.index ["status_id"], name: "index_collections_on_status_id"
-    t.index ["users_id"], name: "index_collections_on_users_id"
+    t.index ["user_id"], name: "index_collections_on_user_id"
   end
 
   create_table "conditions", force: :cascade do |t|
@@ -46,17 +45,17 @@ ActiveRecord::Schema.define(version: 2022_06_01_204113) do
 
   create_table "messages", force: :cascade do |t|
     t.text "content"
-    t.bigint "users_id", null: false
-    t.bigint "chatrooms_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "chatroom_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["chatrooms_id"], name: "index_messages_on_chatrooms_id"
-    t.index ["users_id"], name: "index_messages_on_users_id"
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "prices", force: :cascade do |t|
     t.date "timestamp"
-    t.float "price"
+    t.integer "price"
     t.string "market"
     t.float "size", null: false
     t.bigint "sneaker_id", null: false
@@ -104,22 +103,22 @@ ActiveRecord::Schema.define(version: 2022_06_01_204113) do
   end
 
   create_table "whishlists", force: :cascade do |t|
-    t.bigint "sneakers_id", null: false
-    t.bigint "users_id", null: false
+    t.bigint "sneaker_id", null: false
+    t.bigint "user_id", null: false
     t.decimal "price_alert"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["sneakers_id"], name: "index_whishlists_on_sneakers_id"
-    t.index ["users_id"], name: "index_whishlists_on_users_id"
+    t.index ["sneaker_id"], name: "index_whishlists_on_sneaker_id"
+    t.index ["user_id"], name: "index_whishlists_on_user_id"
   end
 
-  add_foreign_key "collections", "conditions", column: "conditions_id"
-  add_foreign_key "collections", "sneakers", column: "sneakers_id"
+  add_foreign_key "collections", "conditions"
+  add_foreign_key "collections", "sneakers"
   add_foreign_key "collections", "statuses"
-  add_foreign_key "collections", "users", column: "users_id"
-  add_foreign_key "messages", "chatrooms", column: "chatrooms_id"
-  add_foreign_key "messages", "users", column: "users_id"
+  add_foreign_key "collections", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "prices", "sneakers"
-  add_foreign_key "whishlists", "sneakers", column: "sneakers_id"
-  add_foreign_key "whishlists", "users", column: "users_id"
+  add_foreign_key "whishlists", "sneakers"
+  add_foreign_key "whishlists", "users"
 end

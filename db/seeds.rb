@@ -1,4 +1,5 @@
 #Create size table
+
 Sneaker.destroy_all
 Price.destroy_all
 
@@ -81,3 +82,12 @@ end
 p "------------------"
 p "SEED FINISH | #{Sneaker.count} sneakers created"
 p "------------------"
+
+p "GETTING PRICES"
+
+Sneaker.all.each do |sneaker|
+  p sneaker
+  price = Price.new(timestamp: Time.now, price: rand(100..1000), market: "Lusso", size: 4)
+  price.sneaker = sneaker
+  price.save!
+end
