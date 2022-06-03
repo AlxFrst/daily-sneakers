@@ -16,6 +16,7 @@ class SneakersController < ApplicationController
     else
       @sneakers = Sneaker.all
     end
+    @sneakers = Kaminari.paginate_array(@sneakers).page params[:page]
     @prices = Price.all
   end
 
