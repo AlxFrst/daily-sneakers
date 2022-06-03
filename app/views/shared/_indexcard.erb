@@ -1,29 +1,33 @@
 <div class="index-card col-3">
-  <div class="index-card-image" style="background-image: url('<%= sneaker.imgurl %>');">
-  <% case sneaker.brand.downcase %>
-  <% when 'nike' %>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="" class="index-card-logo">
-  <% when 'adidas' %>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" alt="" class="index-card-logo">
-  <% when 'air jordan' %>
-    <img src="https://upload.wikimedia.org/wikipedia/fr/3/37/Jumpman_logo.svg" alt="" class="index-card-logo">
-  <% when 'new balance' %>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/New_Balance_logo.svg" alt="" class="index-card-logo">
-  <% when 'reebok' %>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Reebok_2019_logo.svg" alt="" class="index-card-logo">
-  <% when 'puma' %>
-    <img src="https://upload.wikimedia.org/wikipedia/fr/4/49/Puma_AG.svg" alt="" class="index-card-logo">
-  <% when 'kangaroos' %>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Kangourou.svg" alt="" class="index-card-logo">
-  <% when 'dior' %>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Dior_Logo.svg" alt="" class="index-card-logo">
-  <% else %>
-    <img src="" alt="" class="index-card-logo"> %>
+  <%= link_to sneaker_path(sneaker) do %>
+    <div class="index-card-image" style="background-image: url('<%= sneaker.imgurl %>');">
+      <% case sneaker.brand.downcase %>
+      <% when 'nike' %>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="" class="index-card-logo">
+      <% when 'adidas' %>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" alt="" class="index-card-logo">
+      <% when 'air jordan' %>
+        <img src="https://upload.wikimedia.org/wikipedia/fr/3/37/Jumpman_logo.svg" alt="" class="index-card-logo">
+      <% when 'new balance' %>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/New_Balance_logo.svg" alt="" class="index-card-logo">
+      <% when 'reebok' %>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Reebok_2019_logo.svg" alt="" class="index-card-logo">
+      <% when 'puma' %>
+        <img src="https://upload.wikimedia.org/wikipedia/fr/4/49/Puma_AG.svg" alt="" class="index-card-logo">
+      <% when 'kangaroos' %>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Kangourou.svg" alt="" class="index-card-logo">
+      <% when 'dior' %>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Dior_Logo.svg" alt="" class="index-card-logo">
+      <% else %>
+        <img src="" alt="" class="index-card-logo"> %>
+      <% end %>
+      <div class="index-card-date">
+        <%= sneaker.release.strftime("%m-%Y") %>
+      </div>
+    </div>
   <% end %>
-    <div class="index-card-date"><%= sneaker.release %></div>
-  </div>
   <div class="index-card-block">
-    <h5><%= "#{sneaker.brand} #{sneaker.model}" %></h5>
+    <h5><%= link_to "#{sneaker.brand} #{sneaker.model}", sneaker_path(sneaker) %></h5>
     <div class="index-card-bottom">
       <p class="index-card-price"><%= sneaker.prices.map { |i| i.price.to_i }.max %>$</p>
       <div class="index-card-shared">

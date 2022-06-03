@@ -4,19 +4,33 @@
 @import "wishlist";
 
 .index-pagination {
-  margin: auto;
+  display: flex;
   nav {
-    padding: 0 50vh;
-    .page.current {
-      color: red;
-    }
+    text-align: center;
+    padding: 2em 0;
     span {
+      font-size: 0.9em;
+      margin: 0 0.3em;
       a {
+        color: $pagination-color;
         text-decoration: none;
-        color: black;
-        text-align: center;
         margin: 16px 4px;
       }
+    }
+    .page {
+      a {
+        border: 2px solid $pagination-border;
+        border-radius: $border-radius;
+        padding: 5px 5px 5px 5px;
+        text-decoration: none;
+
+        &:hover {
+          background: $pagination-border;
+        }
+      }
+    }
+    &.current {
+      color: $pagination-color;
     }
   }
 }
