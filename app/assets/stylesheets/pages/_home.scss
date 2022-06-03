@@ -45,7 +45,7 @@
   padding: 0;
   margin: 0 20px;
   h5 {
-    margin-top: 3vh;
+    margin-top: 11px;
     text-align: center;
   }
 }
@@ -73,31 +73,31 @@
 .upcoming-card-bottom {
   display: flex;
   justify-content: space-between;
-  padding: 0 1vh;
+  padding: 0 4px;
   color: rgba(164, 158, 158, 0.5);
   p {
-    margin-bottom: 0vh;
+    margin-bottom: 0px;
   }
   i {
-    margin-left: 1.5vh;
+    margin-left: 6px;
     font-size: 20px;
   }
 }
 
 .upcoming-card-logo {
   position: relative;
-  height: 4vh;
-  left: 1vh;
-  top: 1vh;
+  height: 15px;
+  left: 4px;
+  top: 4px;
 }
 
 .upcoming-card-date {
   position: relative;
-  right: 2vh;
-  top: 1.5vh;
+  right: 8px;
+  top: 6px;
   padding-bottom: 20px;
   color: rgba(164, 158, 158, 1);
-  font-size: 2vh;
+  font-size: 8px;
 }
 
 .banner {
