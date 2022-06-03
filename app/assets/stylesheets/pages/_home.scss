@@ -48,7 +48,19 @@
     text-align: center;
   }
 }
-
+.view-all-link{
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+  padding-right: 40px;
+  color: #667080;
+  opacity: 0.8;
+  font-size: 16px;
+  &:hover{
+    color: #667080;
+    opacity: 1;
+  }
+}
 .upcoming-card-image {
   background-image: url('https://u4n2q9h4.rocketcdn.me/wp-content/images/2021/12/a-ma-maniere-air-jordan-2-do7216-100-pic100-1100x620.jpg');
   background-position: center;
