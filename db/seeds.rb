@@ -45,7 +45,7 @@ upcoming_doc.css("#content").css(".flex.items-center.space-x-4").each do |sneake
 end
 
 p "------------------"
-p "UPCOMING RELEASE FINISHED"
+p "UPCOMING RELEASE FINISHED!"
 p "------------------"
 p "ALL UPCOMING RELEASE CREATION"
 
