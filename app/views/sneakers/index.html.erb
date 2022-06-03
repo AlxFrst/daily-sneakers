@@ -12,5 +12,8 @@
     <% @sneakers.each do |sneaker| %>
       <%= render 'shared/indexcard', sneaker: sneaker %>
     <% end %>
+    <div class="index-pagination">
+      <%= paginate @sneakers %>
+    </div>
   </section>
 </div>
