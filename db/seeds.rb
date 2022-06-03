@@ -9,7 +9,6 @@ p "Cette seed prend un temps monstrueux, donc va prendre un café :)"
 p "------------------"
 p "UPCOMING RELEASE"
 p "------------------"
-upcoming_pages = 1
 upcoming_url = "https://www.sneakerjagers.com/en/releases"
 upcoming_doc = Nokogiri::HTML(URI.open(upcoming_url))
 upcoming_doc.css("#content").css(".flex.items-center.space-x-4").each do |sneaker|
@@ -51,12 +50,11 @@ p "ALL UPCOMING RELEASE CREATION"
 
 #ALREADY RELEASED
 released_pages = 1
-released_url = "https://lussofootwear.com/popular/mens?page=#{released_pages.to_s}"
+released_url = "https://lussofootwear.com/popular/mens?page=#{released_pages}"
 released_doc = Nokogiri::HTML(URI.open(released_url))
 released_total_pages = released_doc.css(".list-reset").css("li")[-2].text.to_i
 
 released_total_pages.times do |page|
-  page + 1
   p "------------------"
   p "Page #{page + 1}/#{released_total_pages}"
   p "------------------"
