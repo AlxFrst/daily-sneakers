@@ -48,7 +48,19 @@
     text-align: center;
   }
 }
-
+.view-all-link{
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+  padding-right: 40px;
+  color: #667080;
+  opacity: 0.8;
+  font-size: 16px;
+  &:hover{
+    color: #667080;
+    opacity: 1;
+  }
+}
 .upcoming-card-image {
   background-position: center;
   background-size: cover;
