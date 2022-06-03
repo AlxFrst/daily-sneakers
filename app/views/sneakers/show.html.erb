@@ -1,6 +1,6 @@
 <div class="container">
   <div class="show-page">
-    <div class="title">
+    <div class="title pt-5">
       <h2 class="brand"><%= @sneaker.brand %> <%= @sneaker.model %></h2>
       <h4 class="my-3 color"><%= @sneaker.color %></h4>
     </div>
@@ -11,7 +11,7 @@
       <div class="col-md-6 right-side">
         <div class="best-price d-flex justify-content-between">
           <p class="price">100€</p>
-          <a class="market-btn"href="">Market logo <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="market-btn"href=""> <%= image_tag "stockx.png" %></a>
         </div>
         <div class="information">
           <p>Size: <strong>US10</strong></p>
@@ -24,38 +24,38 @@
         </div>
       </div>
     </div>
-    <div class="price-history">
+    <div class="price-history pt-3 pb-5">
       <h4>Price history</h4>
       <%= image_tag 'T1.png', class:'graph'%>
     </div>
-    <div class="price-comparator">
-      <table class="table">
+    <div class="dashboard-table mt-5 mb-5">
+      <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col" class='text-center'>Reseller</th>
-            <th scope="col" class='text-center'>Actual price</th>
-            <th scope="col" class='text-center'>Vatiation</th>
-            <th scope="col" class='text-center'>Latest update</th>
+            <th>Reseller</th>
+            <th>Actual price</th>
+            <th>Variation</th>
+            <th>Latest update</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th scope="row" class='text-center'>StockX Logo</th>
-            <td class='text-center'>1200€</td>
-            <td class='text-center'>Variation logo</td>
-            <td class='text-center'>27 mai 2022</td>
+            <td><%= image_tag "stockx.png"%></td>
+            <td>150€</td>
+            <td>up</td>
+            <td>27/03/2022</td>
           </tr>
           <tr>
-            <th scope="row" class='text-center'>StockX Logo</th>
-            <td class='text-center'>1200€</td>
-            <td class='text-center'>Variation logo</td>
-            <td class='text-center'>27 mai 2022</td>
+            <td><%= image_tag "wethe.png"%></td>
+            <td>150€</td>
+            <td>up</td>
+            <td>27/03/2022</td>
           </tr>
           <tr>
-            <th scope="row" class='text-center'>StockX Logo</th>
-            <td class='text-center'>1200€</td>
-            <td class='text-center'>Variation logo</td>
-            <td class='text-center'>27 mai 2022</td>
+            <td><%= image_tag "klekt.png"%></td>
+            <td>150€</td>
+            <td>down</td>
+            <td>27/03/2022</td>
           </tr>
         </tbody>
       </table>

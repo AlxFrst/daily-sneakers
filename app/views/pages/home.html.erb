@@ -28,23 +28,42 @@
       <%= link_to class:"upcoming-link" do %>
         <div class="upcoming-card">
           <div class="upcoming-card-image" style="background-image: url(<%= sneaker.imgurl %>)">
-            <img src="https://upload.wikimedia.org/wikipedia/fr/3/37/Jumpman_logo.svg" alt="" class="upcoming-card-logo">
-            <div class="upcoming-card-date"><%= sneaker.release %></div>
-          </div>
-          <div class="upcoming-card-block">
-            <h5><%= sneaker.brand %> <%= sneaker.model %></h5>
-            <div class="upcoming-card-bottom">
-              <p class="upcoming-card-price"><%= sneaker.prices.map{|i| i.price}.max %>$</p>
-              <div class="upcoming-card-shared">
-                <i class="fa-solid fa-heart"></i>
-                <i class="fa-solid fa-share-nodes"></i>
-              </div>
+            <% case sneaker.brand.downcase %>
+            <% when 'nike' %>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="" class="index-card-logo">
+            <% when 'adidas' %>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" alt="" class="index-card-logo">
+            <% when 'air jordan' %>
+            <img src="https://upload.wikimedia.org/wikipedia/fr/3/37/Jumpman_logo.svg" alt="" class="index-card-logo">
+            <% when 'new balance' %>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/New_Balance_logo.svg" alt="" class="index-card-logo">
+            <% when 'reebok' %>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Reebok_2019_logo.svg" alt="" class="index-card-logo">
+            <% when 'puma' %>
+            <img src="https://upload.wikimedia.org/wikipedia/fr/4/49/Puma_AG.svg" alt="" class="index-card-logo">
+            <% when 'kangaroos' %>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Kangourou.svg" alt="" class="index-card-logo">
+            <% when 'dior' %>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Dior_Logo.svg" alt="" class="index-card-logo">
+          <% else %>
+            <img src="" alt="" class="index-card-logo"> %>
+          <% end %>
+          <div class="upcoming-card-date"><%= sneaker.release %></div>
+        </div>
+        <div class="upcoming-card-block">
+          <h5><%= sneaker.brand %> <%= sneaker.model %></h5>
+          <div class="upcoming-card-bottom">
+            <p class="upcoming-card-price"><%= sneaker.prices.map{|i| i.price}.max %>$</p>
+            <div class="upcoming-card-shared">
+              <i class="fa-solid fa-heart"></i>
+              <i class="fa-solid fa-share-nodes"></i>
             </div>
           </div>
         </div>
-      <% end %>
+      </div>
     <% end %>
-  </div>
+  <% end %>
+</div>
 </section>
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://images.unsplash.com/photo-1530202218-5a52c6d42753?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80);">
   <div class="container">
