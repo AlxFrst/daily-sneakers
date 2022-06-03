@@ -2,10 +2,6 @@
 Sneaker.destroy_all
 Price.destroy_all
 
-# Sneakers database
-require "Nokogiri"
-require "open-uri"
-
 p "Cette seed prend un temps monstrueux, donc va prendre un café :)"
 
 #UPCOMING RELEASE
