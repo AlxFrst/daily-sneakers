@@ -10,7 +10,7 @@
 <div class="container">
   <section class="row">
     <% @sneakers.each do |sneaker| %>
-      <%= render 'shared/indexcard', sneaker: sneaker %>
+        <%= render 'shared/indexcard', sneaker: sneaker %>
     <% end %>
     <div class="index-pagination">
       <%= paginate @sneakers %>
