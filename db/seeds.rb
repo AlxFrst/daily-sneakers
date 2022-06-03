@@ -1,10 +1,7 @@
 #Create size table
+
 Sneaker.destroy_all
 Price.destroy_all
-
-# Sneakers database
-require "Nokogiri"
-require "open-uri"
 
 p "Cette seed prend un temps monstrueux, donc va prendre un café :)"
 
@@ -48,7 +45,7 @@ upcoming_doc.css("#content").css(".flex.items-center.space-x-4").each do |sneake
 end
 
 p "------------------"
-p "UPCOMING RELEASE FINISHED"
+p "UPCOMING RELEASE FINISHED!"
 p "------------------"
 p "ALL UPCOMING RELEASE CREATION"
 
@@ -85,3 +82,12 @@ end
 p "------------------"
 p "SEED FINISH | #{Sneaker.count} sneakers created"
 p "------------------"
+
+p "GETTING PRICES"
+
+Sneaker.all.each do |sneaker|
+  p sneaker
+  price = Price.new(timestamp: Time.now, price: rand(100..1000), market: "Lusso", size: 4)
+  price.sneaker = sneaker
+  price.save!
+end
