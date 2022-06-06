@@ -79,3 +79,17 @@
 .index-card-block {
   height: 110px;
 }
+
+.index-card-shared{
+  .fa-heart{
+    &:hover{
+      color: red;
+    }
+  }
+
+  .fa-share-nodes{
+    &:hover{
+      color: $third-color;
+    }
+  }
+}
