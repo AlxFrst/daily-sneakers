@@ -138,3 +138,17 @@
     color: black;
   }
 }
+
+.upcoming-card-price{
+  .fa-heart{
+    &:hover{
+      color: red;
+    }
+  }
+
+  .fa-share-nodes{
+    &:hover{
+      color: $third-color;
+    }
+  }
+}

@@ -8,6 +8,8 @@
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "email" }%>
+        <%= f.input :first_name, required: true %>
+        <%= f.input :last_name, required: true %>
         <%= f.input :password,
                   required: true,
                   hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
@@ -16,6 +18,7 @@
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
         <%= f.input :avatar, as: :file %>
+        <%= f.input :size, collection: Price.all.map(&:size).uniq.sort, required: true%>
       </div>
       <div class="form-actions">
         <%= f.button :submit, "Sign up" %>
