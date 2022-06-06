@@ -69,9 +69,7 @@
       margin: 0;
       align-self: center;
       text-decoration: none;
-      background-color: #eef1f4;
-      padding: 10px 15px;
-      border-radius: 6px;
+
       i {
         color: black;
       }
@@ -107,5 +105,21 @@
         text-decoration: none;
       }
     }
+  }
+}
+
+.market-btn {
+
+  img {
+    width: 120px;
+    height: 40px;
+    margin-right: 15em;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+}
+
+td {
+  img {
+    height: 50px;
   }
 }
