@@ -103,25 +103,6 @@ Sneaker.all.each do |sneaker|
       end
     end
   end
-
-  kikikickz = "https://kikikickz.com/search?type=product&q=#{sneaker.reference}"
-  kikikickzdoc = Nokogiri::HTML(URI.open(kikikickz, "User-Agent" => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36"))
-  if kikikickzdoc.css(".product__item--container").length == 0
-    puts "No price found for #{sneaker.reference} | KIKIKICKZ"
-    sneaker.destroy
-  else
-    puts "Price found for #{sneaker.reference} | KIKIKICKZ"
-    detail_kikikickz = "https://kikikickz.com#{kikikickzdoc.css(".product__item__link--container").attr("href").value}"
-    detail_kikikickzdoc = Nokogiri::HTML(URI.open(detail_kikikickz))
-    detail_kikikickzdoc.css(".product--price-page").css(".select__custom--value").each do |price|
-      if (price.text.split("-")[1] && price.text.split("-")[2])
-        size = price.text.split("-")[1].gsub(" US ", "").strip.to_f
-        price = price.text.split("-")[2].strip.gsub("€", "").to_f
-        new_price = Price.new(market: "kikikickz", timestamp: Time.now, size: size, price: price, sneaker_id: sneaker.id)
-        new_price.save
-      end
-    end
-  end
 end
 
 end_time = Time.now
