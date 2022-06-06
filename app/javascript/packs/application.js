@@ -16,6 +16,8 @@ import "controllers"
 import "bootstrap"
 
 import { priceSlider } from "../channels/price_slider";
+import { myChart } from "../channels/graph";
+
 
 document.addEventListener('turbolinks:load', () => {
   priceSlider();
