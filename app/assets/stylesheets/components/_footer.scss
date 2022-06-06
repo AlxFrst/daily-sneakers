@@ -31,4 +31,7 @@
 }
 .footer .fa-heart {
   color: $third-color;
+  &:hover {
+    color: red;
+  }
 }
