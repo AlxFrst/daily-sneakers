@@ -105,7 +105,7 @@ Sneaker.all.each do |sneaker|
   end
 
   kikikickz = "https://kikikickz.com/search?type=product&q=#{sneaker.reference}"
-  kikikickzdoc = Nokogiri::HTML(URI.open(kikikickz))
+  kikikickzdoc = Nokogiri::HTML(URI.open(kikikickz, "User-Agent" => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36"))
   if kikikickzdoc.css(".product__item--container").length == 0
     puts "No price found for #{sneaker.reference} | KIKIKICKZ"
     sneaker.destroy
