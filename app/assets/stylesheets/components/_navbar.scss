@@ -2,6 +2,7 @@
   justify-content: space-between;
   background-color: transparent;
   transition: 0.5s background-color ease;
+
 }
 
 .navbar-nav {
@@ -12,7 +13,7 @@
 
 .navbar-lewagon-white {
   background-color: white;
-  border-bottom: 1px solid #c4c4c4;
+  box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -50,18 +51,6 @@
   }
 }
 
-.align {
-  display: grid;
-  place-items: center;
-}
-
-.grid {
-  margin-left: 370px;
-  margin-right: auto;
-  max-width: 20rem;
-  width: 90%;
-}
-
 /* modules/button.css */
 
 .button {
@@ -70,6 +59,9 @@
   padding: var(--searchInputButtonPaddingVertical)
     var(--searchInputButtonPaddingHorizontal);
   transition: 0.3s;
+  border: none;
+  border-radius: 12px;
+  padding: 10px;
 }
 
 .button:focus,
@@ -83,6 +75,7 @@
 ::placeholder {
   color: #42454e;
 }
+
 
 input {
   appearance: none;
@@ -142,22 +135,13 @@ input[type="submit"] {
 
 .search {
   background-color: white;
-  width: 450px;
+  padding: 10px;
   padding: 10px 15px;
   border-radius: 4px;
   font-size: 14px;
+  width: 400px;
 }
-
-.search input[type="search"],
-.search input[type="submit"] {
-  border-radius: 8px;
-}
-
-.search input[type="search"] {
-  background-color: #f2f4f8;
-  color: black;
-  padding: 10px 15px;
-}
-.dropdown-custom {
-  border: solid 2px #f2f4f8;
+#search_query{
+  background-color: #F2F4F8;
+  margin-right: 15px;
 }
