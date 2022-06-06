@@ -9,14 +9,27 @@
         <img class="sneaker-img" src="<%= @sneaker.imgurl %>" alt="<%= @sneaker.brand %> <%= @sneaker.model %>">
       </div>
       <div class="col-md-6 right-side">
+        <% infos = Price.where("sneaker_id = ? AND size = ?", @sneaker.id, current_user ? current_user.size : 10) %>
         <div class="best-price d-flex justify-content-between">
-          <p class="price">100€</p>
-          <a class="market-btn"href=""> <%= image_tag "stockx.png" %></a>
+          <p class="price"><%= infos.first.price %>$</p>
+          <a class="market-btn" href="">
+          <% case infos.first.market %>
+          <% when 'StockX' %>
+            <%= image_tag "stockx.svg" %>
+          <% when 'Klekt' %>
+            <%= image_tag "klekt.png" %>
+          <% when 'Wethenew' %>
+            <%= image_tag "wethenew.png" %>
+          <% else %>
+            <%= image_tag "market.png" %>
+          <% end %>
+          </a>
         </div>
         <div class="information">
-          <p>Size: <strong>US10</strong></p>
-          <p>Model: <strong>Standard</strong></p>
-          <p>Owners: <strong>1,034</strong></p>
+          <%= render 'shared/sizer', sizes: @sneaker.prices, sneaker_id: @sneaker.id %>
+          <p>Size: <strong>US<%= infos.first.size %></strong></p>
+          <p>Date: <strong><%= @sneaker.release %></strong></p>
+          <p>Owners: <strong><%= Collection.where(sneaker_id: @sneaker.id).count %></strong></p>
           <div class="dash-buttons d-flex justify-content-between">
             <a class='wishlist'href="">Add to wishlist <i class="fa-solid fa-plus"></i></a>
             <a class='collection'href="">Add to collection <i class="fa-solid fa-plus"></i></a>
@@ -39,24 +52,25 @@
           </tr>
         </thead>
         <tbody>
+        <% infos.each do |i| %>
           <tr>
-            <td><%= image_tag "stockx.png"%></td>
-            <td>150€</td>
+            <td>
+              <% case i.market %>
+              <% when 'StockX' %>
+                <%= image_tag "stockx.svg" %>
+              <% when 'Klekt' %>
+                <%= image_tag "klekt.png" %>
+              <% when 'Wethenew' %>
+                <%= image_tag "wethenew.png" %>
+              <% else %>
+                <%= image_tag "market.png" %>
+              <% end %>
+            </td>
+            <td><%= i.price %>$</td>
             <td>up</td>
-            <td>27/03/2022</td>
+            <td><%= i.timestamp %></td>
           </tr>
-          <tr>
-            <td><%= image_tag "wethe.png"%></td>
-            <td>150€</td>
-            <td>up</td>
-            <td>27/03/2022</td>
-          </tr>
-          <tr>
-            <td><%= image_tag "klekt.png"%></td>
-            <td>150€</td>
-            <td>down</td>
-            <td>27/03/2022</td>
-          </tr>
+        <% end %>
         </tbody>
       </table>
     </div>
