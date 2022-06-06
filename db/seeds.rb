@@ -1,7 +1,7 @@
 #Create size table
+start_time = Time.now
 
 Sneaker.destroy_all
-Price.destroy_all
 
 p "Cette seed prend un temps monstrueux, donc va prendre un café :)"
 
@@ -82,11 +82,35 @@ p "SEED FINISH | #{Sneaker.count} sneakers created"
 p "------------------"
 
 p "GETTING PRICES"
+Price.destroy_all
 
 Sneaker.all.each do |sneaker|
-  p sneaker
-  market = ["Klekt", "StockX", "Wethenew"]
-  price = Price.new(timestamp: Time.now, price: rand(100..1000), market: market.sample, size: 4)
-  price.sneaker = sneaker
-  price.save!
+  kelkt = "https://www.klekt.com/all?search=#{sneaker.reference}"
+  kelktdoc = Nokogiri::HTML(URI.open(kelkt))
+  if kelktdoc.css(".c-product-pod").length == 0
+    puts "No price found for #{sneaker.reference} | KLEKT"
+    sneaker.destroy
+  else
+    puts "Price found for #{sneaker.reference} | KLEKT"
+    detail_kelkt = "https://www.klekt.com#{kelktdoc.css(".c-product-pod").first.css(".pod-link").attr("href").value}"
+    detail_kelktdoc = Nokogiri::HTML(URI.open(detail_kelkt))
+    detail_kelktdoc.css(".c-price-point").each do |price|
+      if (price.css("span")[1].text && price.css("span")[2])
+        size = price.css("span")[1].text.gsub(/[^\d\.]/, "").to_f
+        price = price.css("span")[2].text.gsub(/[^\d\.]/, "").to_f
+        new_price = Price.new(market: "klekt", timestamp: Time.now, size: size, price: price, sneaker_id: sneaker.id)
+        new_price.save
+      end
+    end
+  end
 end
+
+end_time = Time.now
+
+p "------------------"
+p "SEED FINISH "
+p " time elapsed: #{(end_time - start_time) / 60} minutes"
+p " #{Sneaker.count} sneakers created"
+p " #{Price.count} prices created}"
+p "Total database entries: #{Sneaker.count + Price.count}"
+p "------------------"

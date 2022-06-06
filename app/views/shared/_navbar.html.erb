@@ -6,23 +6,17 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="grid">
-      <form action="/sneakers" method="get" class="search">
-        <div class="form__field">
-          <input type="search" name="search" placeholder="Article name or keywords..." class="form__input">
-          <div class="dropdown">
-            <button class="btn dropdown-custom dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              All category
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">test</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
-          <input type="submit" value="Search" class="button">
+    <div class="search-bar">
+      <%= simple_form_for :search, url: sneakers_path, method: :get do |f| %>
+        <div class="search-form-control form-group d-flex justify-content-between">
+          <%= form_tag sneakers_path, method: :get, class:"mr-5" do %>
+            <%= text_field_tag :search, params[:search], class: "form-control search-placeholder ", id: "search_query", placeholder: "Article name or keywords...", autocomplete: "off"%>
+          <% end %>
+          <button type="submit" class="button">
+            Search
+          </button>
         </div>
-      </form>
+      <% end %>
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
@@ -31,7 +25,11 @@
             <%= link_to "Messages", "#", class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-            <%= image_tag "https://thumbs.dreamstime.com/b/avatar-par-d%C3%A9faut-ic%C3%B4ne-profil-vectoriel-m%C3%A9dias-sociaux-utilisateur-portrait-176256935.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% if current_user.avatar.key.nil? %>
+              <%= image_tag "https://thumbs.dreamstime.com/b/avatar-par-d%C3%A9faut-ic%C3%B4ne-profil-vectoriel-m%C3%A9dias-sociaux-utilisateur-portrait-176256935.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% else %>
+              <%= cl_image_tag current_user.avatar.key, class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Wishlist", wishlist_path, class: "dropdown-item" %>
               <%= link_to "Collection", collection_path, class: "dropdown-item" %>
