@@ -7,10 +7,10 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="search-bar">
-      <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+      <%= simple_form_for :search, url: sneakers_path, method: :get do |f| %>
         <div class="search-form-control form-group d-flex justify-content-between">
           <%= form_tag sneakers_path, method: :get, class:"mr-5" do %>
-            <%= text_field_tag :query, params[:query], class: "form-control search-placeholder ", id: "search_query", placeholder: "Article name or keywords...", autocomplete: "off"%>
+            <%= text_field_tag :search, params[:search], class: "form-control search-placeholder ", id: "search_query", placeholder: "Article name or keywords...", autocomplete: "off"%>
           <% end %>
           <button type="submit" class="button">
             Search
