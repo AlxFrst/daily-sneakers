@@ -35,6 +35,9 @@
   p{
     font-size: 18px;
   }
+  h5{
+   font-size: 18px;
+  }
 }
 .upcoming-card {
   border-radius: 4px;
@@ -159,3 +162,11 @@
     color: $third-color;
   }
 }
+.scroll{
+  white-space: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* [3] */
+  -ms-overflow-style: -ms-autohiding-scrollbar; /* [4] */
+}
+.scroll::-webkit-scrollbar {
+  display: none; }
