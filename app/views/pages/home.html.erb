@@ -24,7 +24,7 @@
 </section>
 <section class="up-coming">
   <h2>Upcoming releases</h2>
-  <div class="d-flex">
+  <div class="d-flex scroll">
     <% @upcoming_sneakers.each do |sneaker|%>
       <%= link_to sneaker_path(sneaker),class:"upcoming-link" do %>
         <div class="upcoming-card">
@@ -52,7 +52,8 @@
           <div class="upcoming-card-date"><%= sneaker.release %></div>
         </div>
         <div class="upcoming-card-block">
-          <h5><%= sneaker.brand %> <%= sneaker.model %></h5>
+          <h5><%= sneaker.brand %> <br>
+            <%= sneaker.model %></h5>
         <% end %>
         <div class="upcoming-card-bottom">
           <p class="upcoming-card-price"><%= sneaker.prices.map{|i| i.price}.max %>$</p>
