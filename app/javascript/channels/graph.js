@@ -64,6 +64,10 @@ const config = {
     }
 }
 };
+const options = {
+  "responsive": true,
+  "maintainAspectRatio": false
+}
 const myChart = new Chart(
   document.getElementById('myChart'),
   config
