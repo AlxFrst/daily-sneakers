@@ -13,8 +13,8 @@
         <% Price.where(sneaker_id: @sneaker.id).each do |i| %>
           <% dates << i.timestamp %>
         <% end %>
-        <% infos = Price.where("sneaker_id = ? AND size = ? AND timestamp = ?",
-        @sneaker.id, current_user ? current_user.size : 10, dates.max) %>
+        <% infos = Price.where("sneaker_id = ? AND size = ?",
+        @sneaker.id, current_user ? current_user.size : 10) %>
         <div class="best-price d-flex justify-content-between">
           <p class="price"><%= infos.first.price %>$</p>
           <a class="market-btn" href="">
