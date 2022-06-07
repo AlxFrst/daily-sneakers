@@ -145,3 +145,14 @@ input[type="submit"] {
   background-color: #F2F4F8;
   margin-right: 15px;
 }
+.nav-bar-user{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 15px;
+  margin-left: 10px;
+  font-size: 20px;
+}
+.dropdown{
+  cursor: pointer;
+}
