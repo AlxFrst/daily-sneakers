@@ -83,6 +83,9 @@
         font-weight: 500;
       }
     .dash-buttons {
+      a {
+        text-decoration: none;
+      }
       margin: 0;
       border-radius: 6px;
       margin-top: 25px;
