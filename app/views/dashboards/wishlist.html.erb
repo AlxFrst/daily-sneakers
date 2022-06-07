@@ -23,38 +23,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td class="justify-text"><%= image_tag "nike.svg", class:"logo-rounded" %> Nike air jordan 1 Travis Scott</td>
-          <td>150€</td>
-          <td>27/03/2022</td>
-          <td>1000€</td>
-          <td><i class="fas fa-pen"></i></td>
-          <td><i class="fas fa-trash"></i></td>
-        </tr>
-        <tr>
-          <td class="justify-text"><%= image_tag "adidas.svg", class:"logo-rounded" %> Yezzy 350 V2 Bred</td>
-          <td>300€</td>
-          <td>12/07/2021</td>
-          <td>400€</td>
-          <td><i class="fas fa-pen"></i></td>
-          <td><i class="fas fa-trash"></i></td>
-        </tr>
-        <tr>
-          <td class="justify-text"><%= image_tag "nike.svg", class:"logo-rounded" %> Nike air jordan 1 Travis Scott</td>
-          <td>150€</td>
-          <td>27/03/2022</td>
-          <td>1000€</td>
-          <td><i class="fas fa-pen"></i></td>
-          <td><i class="fas fa-trash"></i></td>
-        </tr>
-        <tr>
-          <td class="justify-text"><%= image_tag "adidas.svg", class:"logo-rounded" %> Yezzy 350 V2 Bred</td>
-          <td>300€</td>
-          <td>12/07/2021</td>
-          <td>400€</td>
-          <td><i class="fas fa-pen"></i></td>
-          <td><i class="fas fa-trash"></i></td>
-        </tr>
+        <% @sneaker.each do |snk| %>
+          <tr>
+            <td class="justify-text"><%= image_tag "nike.svg", class:"logo-rounded" %><%= snk.sneaker.brand %> <%= snk.sneaker.model %></td>
+            <td>Price alert</td>
+            <td><%= snk.sneaker.release %></td>
+            <td><%= snk.sneaker.prices.first.price %>€</td>
+            <td><i class="fas fa-pen"></i></td>
+            <td><i class="fas fa-trash"></i></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
