@@ -105,6 +105,17 @@ Sneaker.all.each do |sneaker|
   end
 end
 
+Sneaker.all.each do |i|
+  range = 5.5..14
+  range.step(0.5) do |f|
+    price_temp = Price.where(sneaker_id: i.id, size: f).last ? Price.where(sneaker_id: i.id, size: f).last.price : nil
+    if price_temp
+      Price.create!(market: 'StockX', timestamp: Time.now, size: f, price: price_temp, sneaker_id: i.id)
+      Price.create!(market: 'Wethenew', timestamp: Time.now, size: f, price: price_temp, sneaker_id: i.id)
+    end
+  end
+end
+
 end_time = Time.now
 
 p "------------------"
