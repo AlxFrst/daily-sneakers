@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_06_074342) do
+ActiveRecord::Schema.define(version: 2022_06_07_072526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,14 +131,14 @@ ActiveRecord::Schema.define(version: 2022_06_06_074342) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "whishlists", force: :cascade do |t|
+  create_table "wishlists", force: :cascade do |t|
     t.bigint "sneaker_id", null: false
     t.bigint "user_id", null: false
-    t.decimal "price_alert"
+    t.string "price_alert_float"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["sneaker_id"], name: "index_whishlists_on_sneaker_id"
-    t.index ["user_id"], name: "index_whishlists_on_user_id"
+    t.index ["sneaker_id"], name: "index_wishlists_on_sneaker_id"
+    t.index ["user_id"], name: "index_wishlists_on_user_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -150,6 +150,6 @@ ActiveRecord::Schema.define(version: 2022_06_06_074342) do
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "prices", "sneakers"
-  add_foreign_key "whishlists", "sneakers"
-  add_foreign_key "whishlists", "users"
+  add_foreign_key "wishlists", "sneakers"
+  add_foreign_key "wishlists", "users"
 end

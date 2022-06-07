@@ -18,68 +18,72 @@
         <div class="best-price d-flex justify-content-between">
           <p class="price"><%= infos.first.price %>$</p>
           <a class="market-btn" href="">
-          <% case infos.first.market %>
-          <% when 'StockX' %>
+            <% case infos.first.market %>
+            <% when 'StockX' %>
             <%= image_tag "stockx.svg" %>
-          <% when 'Klekt' %>
+            <% when 'Klekt' %>
             <%= image_tag "klekt.png" %>
-          <% when 'Wethenew' %>
+            <% when 'Wethenew' %>
             <%= image_tag "wethenew.png" %>
           <% else %>
             <%= image_tag "market.png" %>
           <% end %>
-          </a>
-        </div>
-        <div class="information">
-          <%= render 'shared/sizer', sizes: @sneaker.prices, sneaker_id: @sneaker.id %>
-          <p>Size: <strong>US<%= infos.first.size %></strong></p>
-          <p>Date: <strong><%= @sneaker.release %></strong></p>
-          <p>Owners: <strong><%= Collection.where(sneaker_id: @sneaker.id).count %></strong></p>
-          <div class="dash-buttons d-flex justify-content-between">
-            <a class='wishlist'href="">Add to wishlist <i class="fa-solid fa-plus"></i></a>
-            <a class='collection'href="">Add to collection <i class="fa-solid fa-plus"></i></a>
-          </div>
+        </a>
+      </div>
+      <div class="information">
+        <%= render 'shared/sizer', sizes: @sneaker.prices, sneaker_id: @sneaker.id %>
+        <p>Size: <strong>US<%= infos.first.size %></strong></p>
+        <p>Date: <strong><%= @sneaker.release %></strong></p>
+        <p>Owners: <strong><%= Collection.where(sneaker_id: @sneaker.id).count %></strong></p>
+        <div class="dash-buttons d-flex justify-content-between">
+          <%= link_to sneaker_wishlists_path(@sneaker), method: :post, remote: true do %>
+            <p class='wishlist'>Add to wishlist <i class="fa-solid fa-plus"></i></p>
+          <% end %>
+          <%= link_to sneaker_collections_path(@sneaker), method: :post, remote: true do %>
+            <p class='collection'>Add to collection <i class="fa-solid fa-plus"></i></p>
+          <% end %>
         </div>
       </div>
     </div>
-    <div class="price-history pt-3 pb-5">
-      <h4>Price history</h4>
-      <div>
-        <canvas id="myChart"></canvas>
-      </div>
+  </div>
+  <div class="price-history pt-3 pb-5">
+    <h4>Price history</h4>
+    <div>
+      <canvas id="myChart"></canvas>
     </div>
-    <div class="dashboard-table mt-5 mb-5" data-controller="market">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Reseller</th>
-            <th>Actual price</th>
-            <th>Variation</th>
-            <th>Latest update</th>
-          </tr>
-        </thead>
-        <tbody>
+  </div>
+  <div class="dashboard-table mt-5 mb-5">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Reseller</th>
+          <th>Actual price</th>
+          <th>Variation</th>
+          <th>Latest update</th>
+        </tr>
+      </thead>
+      <tbody>
         <% infos.each do |i| %>
           <tr>
             <td>
               <% case i.market %>
               <% when 'StockX' %>
-                <%= image_tag "stockx.svg" %>
+              <%= image_tag "stockx.svg" %>
               <% when 'Klekt' %>
-                <%= image_tag "klekt.png" %>
+              <%= image_tag "klekt.png" %>
               <% when 'Wethenew' %>
-                <%= image_tag "wethenew.png" %>
-              <% else %>
-                <%= image_tag "market.png" %>
-              <% end %>
-            </td>
-            <td><%= i.price %>$</td>
-            <td>up</td>
-            <td><%= i.timestamp %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
+              <%= image_tag "wethenew.png" %>
+            <% else %>
+              <%= image_tag "market.png" %>
+            <% end %>
+          </td>
+          <td><%= i.price %>$</td>
+          <td>up</td>
+          <td><%= i.timestamp %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
 </div>
