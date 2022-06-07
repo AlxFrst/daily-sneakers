@@ -162,6 +162,12 @@
     color: $third-color;
   }
 }
+
+.footer-copyright{
+a{
+  text-decoration: none;
+}
+}
 .scroll{
   white-space: nowrap;
   overflow-x: auto;

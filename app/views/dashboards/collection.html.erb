@@ -7,7 +7,7 @@
       <%= link_to 'Profile', profile_path, class: "btn btn-outline-secondary"%>
     </div>
   </div>
-  <h2>999,99€</h2>
+  <h2>Real-time price: <%= @total %>€</h2>
   <%= image_tag"graph-dashboard.png", class:"mt-5" %>
   <div class="d-flex mt-5">
     <h4>Sneakers</h4>
@@ -18,7 +18,7 @@
         <tr>
           <th class="justify-text">Model</th>
           <th>Purchase price</th>
-          <th>Added date</th>
+          <th>Size</th>
           <th>Actual price</th>
           <th>Variation</th>
         </tr>
@@ -50,8 +50,8 @@
               <img src="" alt="" class="index-card-logo">
             <% end %> <%= snk.sneaker.brand %> <%= snk.sneaker.model %></td>
           <td>Purchase price</td>
-          <td><%= snk.sneaker.release %></td>
-          <td><%= snk.sneaker.prices.first.price %>€</td>
+          <td>SIZE</td>
+          <td><%= snk.sneaker.prices.last.price %>€</td>
           <td>UP</td>
           <td><i class="fas fa-pen"></i></td>
           <td>
