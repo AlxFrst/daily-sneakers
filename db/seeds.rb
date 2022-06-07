@@ -1,6 +1,7 @@
 #Create size table
 start_time = Time.now
 
+Wishlist.destroy_all
 Condition.destroy_all
 
 Condition.create(state: "New")

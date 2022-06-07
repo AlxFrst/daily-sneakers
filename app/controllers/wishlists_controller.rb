@@ -1,4 +1,6 @@
 class WishlistsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @sneaker = Sneaker.find(params[:sneaker_id])
     @wishlist = Wishlist.new
