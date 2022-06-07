@@ -19,7 +19,18 @@
       <%= image_tag "most3.png" %>
       <p>Nike Dunk Low SE « Sun Club »</p>
     </div>
-    <%= link_to "All sneakers", sneakers_path,class:"see-more-link" %>
+    <%= link_to sneakers_path do %>
+      <div class="view-more">
+        <div id="container">
+          <button class="learn-more">
+            <span class="circle" aria-hidden="true">
+              <span class="icon arrow"></span>
+            </span>
+            <span class="button-text">All sneakers</span>
+          </button>
+        </div>
+      </div>
+    <% end %>
   </div>
 </section>
 <section class="up-coming">
