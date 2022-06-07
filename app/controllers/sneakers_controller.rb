@@ -14,7 +14,7 @@ class SneakersController < ApplicationController
     elsif params[:min] != "" && params[:min]
       @sneakers = Sneaker.joins(:prices).where("prices.price BETWEEN #{params[:min].to_i} AND #{params[:max].to_i}").group(:id)
     elsif params[:search]
-      @sneakers = Sneaker.where("model LIKE '%#{params[:search]}%'")
+      @sneakers = Sneaker.where("brand LIKE '%#{params[:search].capitalize}%' OR model LIKE '%#{params[:search].capitalize}%'")
     else
       @sneakers = Sneaker.all
     end
