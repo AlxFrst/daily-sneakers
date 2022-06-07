@@ -3,15 +3,6 @@
     <span class="sBtn-text">Change size</span>
     <i class="bx bx-chevron-down"></i>
   </div>
-  <% hash = {} %>
-  <% sizes.each do |i| %>
-    <% if hash[i.size] %>
-      <% hash[i.size] > i.price ? hash[i.size] = i.price : nil %>
-    <% else %>
-      <% hash[i.size] = i.price %>
-    <% end %>
-  <% end %>
-
   <ul class="options">
     <% hash.each do |k, v| %>
       <li class="option">

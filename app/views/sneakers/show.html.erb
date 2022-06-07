@@ -13,13 +13,28 @@
         <% Price.where(sneaker_id: @sneaker.id).each do |i| %>
           <% dates << i.timestamp %>
         <% end %>
+        <% if params['size'] %>
+          <% size = params['size'] %>
+        <% elsif current_user %>
+          <% size = current_user.size %>
+        <% else %>
+          <% size = 10 %>
+        <% end %>
         <% infos = Price.where("sneaker_id = ? AND size = ? AND timestamp = ?",
-        @sneaker.id, current_user ? current_user.size : 10, dates.max) %>
+        @sneaker.id, size, dates.max) %>
+        <% hash = {} %>
+        <% @sneaker.prices.each do |i| %>
+          <% if hash[i.size] %>
+            <% hash[i.size] > i.price ? hash[i.size] = i.price : nil %>
+          <% else %>
+            <% hash[i.size] = i.price %>
+          <% end %>
+        <% end %>
         <div class="best-price d-flex justify-content-between">
-          <p class="price"><%= infos.first.price %>$</p>
+          <p class="price"><%= hash[size.to_f] %>$</p>
           <a class="market-btn" href="">
-            <% case infos.first.market %>
-            <% when 'StockX' %>
+          <% case infos.last.market %>
+          <% when 'StockX' %>
             <%= image_tag "stockx.svg" %>
             <% when 'Klekt' %>
             <%= image_tag "klekt.png" %>
@@ -28,20 +43,21 @@
           <% else %>
             <%= image_tag "market.png" %>
           <% end %>
-        </a>
-      </div>
-      <div class="information">
-        <%= render 'shared/sizer', sizes: @sneaker.prices, sneaker_id: @sneaker.id %>
-        <p>Size: <strong>US<%= infos.first.size %></strong></p>
-        <p>Date: <strong><%= @sneaker.release %></strong></p>
-        <p>Owners: <strong><%= Collection.where(sneaker_id: @sneaker.id).count %></strong></p>
-        <div class="dash-buttons d-flex justify-content-between">
-          <%= link_to sneaker_wishlists_path(@sneaker), method: :post, remote: true do %>
+          </a>
+        </div>
+        <div class="information">
+          <%= render 'shared/sizer', hash: hash, sneaker_id: @sneaker.id %>
+          <p>Size: <strong>US<%= size %></strong></p>
+          <p>Date: <strong><%= @sneaker.release %></strong></p>
+          <p>Owners: <strong><%= Collection.where(sneaker_id: @sneaker.id).count %></strong></p>
+          <div class="dash-buttons d-flex justify-content-between">
+            <%= link_to sneaker_wishlists_path(@sneaker), method: :post, remote: true do %>
             <p class='wishlist'>Add to wishlist <i class="fa-solid fa-plus"></i></p>
           <% end %>
           <%= link_to sneaker_collections_path(@sneaker), method: :post, remote: true do %>
             <p class='collection'>Add to collection <i class="fa-solid fa-plus"></i></p>
           <% end %>
+          </div>
         </div>
       </div>
     </div>

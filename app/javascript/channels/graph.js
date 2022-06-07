@@ -72,3 +72,16 @@ const myChart = new Chart(
   document.getElementById('myChart'),
   config
 );
+
+function updateConfigByMutating(chart) {
+  chart.data.datasets =  {
+    labels: labels,
+    datasets: [{
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [value6, value5, value4, value3, value2, value, price],
+    }]}
+  chart.update();
+}
+
+export { value, updateConfigByMutating }
