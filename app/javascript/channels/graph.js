@@ -69,4 +69,8 @@ const myChart = new Chart(
   config
 );
 
-export { myChart }
+const tabPrices = document.querySelectorAll('.table tbody tr :nth-child(2)')
+
+tabPrices.forEach(elt => {
+  console.log(elt.innerText)
+});

@@ -13,7 +13,8 @@
         <% Price.where(sneaker_id: 2).each do |i| %>
           <% dates << i.timestamp %>
         <% end %>
-        <% infos = Price.where("sneaker_id = ? AND size = ? AND timestamp = ?", @sneaker.id, current_user ? current_user.size : 10, dates.max) %>
+        <% infos = Price.where("sneaker_id = ? AND size = ? AND timestamp = ?",
+        @sneaker.id, current_user ? current_user.size : 10, dates.max) %>
         <div class="best-price d-flex justify-content-between">
           <p class="price"><%= infos.first.price %>$</p>
           <a class="market-btn" href="">
@@ -47,7 +48,7 @@
         <canvas id="myChart"></canvas>
       </div>
     </div>
-    <div class="dashboard-table mt-5 mb-5">
+    <div class="dashboard-table mt-5 mb-5" data-controller="market">
       <table class="table table-hover">
         <thead>
           <tr>
