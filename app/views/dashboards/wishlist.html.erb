@@ -30,7 +30,9 @@
             <td><%= snk.sneaker.release %></td>
             <td><%= snk.sneaker.prices.first.price %>€</td>
             <td><i class="fas fa-pen"></i></td>
-            <td><i class="fas fa-trash"></i></td>
+            <td>
+              <%= link_to "delete", sneaker_wishlist_path(snk.id, Wishlist.find_by(user_id: current_user.id)), method: :delete, class: "btn btn-danger" %>
+            </td>
           </tr>
         <% end %>
       </tbody>
