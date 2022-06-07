@@ -25,17 +25,41 @@
       <tbody>
         <% @sneaker.each do |snk| %>
           <tr>
-            <td class="justify-text"><%= image_tag "nike.svg", class:"logo-rounded" %><%= snk.sneaker.brand %> <%= snk.sneaker.model %></td>
-            <td>Price alert</td>
-            <td><%= snk.sneaker.release %></td>
-            <td><%= snk.sneaker.prices.first.price %>€</td>
-            <td><i class="fas fa-pen"></i></td>
-            <td>
-              <%= link_to "delete", sneaker_wishlist_path(snk.id, Wishlist.find_by(user_id: current_user.id)), method: :delete, class: "btn btn-danger" %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+            <td class="justify-text">
+              <% case snk.sneaker.brand.downcase %>
+              <% when 'nike' %>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="" class="index-card-logo">
+              <% when 'adidas' %>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" alt="" class="index-card-logo">
+              <% when 'air jordan' %>
+              <img src="https://upload.wikimedia.org/wikipedia/fr/3/37/Jumpman_logo.svg" alt="" class="index-card-logo">
+              <% when 'new balance' %>
+              <img src="https://www.logo.wine/a/logo/New_Balance/New_Balance-Logo.wine.svg" alt="" class="index-card-logo">
+              <% when 'reebok' %>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Reebok_2019_logo.svg" alt="" class="index-card-logo">
+              <% when 'puma' %>
+              <img src="https://upload.wikimedia.org/wikipedia/fr/4/49/Puma_AG.svg" alt="" class="index-card-logo">
+              <% when 'kangaroos' %>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Kangourou.svg" alt="" class="index-card-logo">
+              <% when 'dior' %>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Dior_Logo.svg" alt="" class="index-card-logo">
+              <% when 'nike sb' %>
+              <img src="http://upload.wikimedia.org/wikipedia/commons/b/b2/Nike_sb_logo.png" alt="" class="index-card-logo">
+            <% else %>
+              <img src="" alt="" class="index-card-logo">
+            <% end %> <%= snk.sneaker.brand %> <%= snk.sneaker.model %></td>
+          <td>Price alert</td>
+          <td><%= snk.sneaker.release %></td>
+          <td><%= snk.sneaker.prices.first.price %>€</td>
+          <td><i class="fas fa-pen"></i></td>
+          <td>
+            <%= link_to sneaker_wishlist_path(snk.id, Wishlist.find_by(user_id: current_user.id)), method: :delete do%>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 </div>
