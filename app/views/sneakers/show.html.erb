@@ -10,7 +10,7 @@
       </div>
       <div class="col-md-6 right-side">
         <% dates = [] %>
-        <% Price.where(sneaker_id: 2).each do |i| %>
+        <% Price.where(sneaker_id: @sneaker.id).each do |i| %>
           <% dates << i.timestamp %>
         <% end %>
         <% infos = Price.where("sneaker_id = ? AND size = ? AND timestamp = ?",

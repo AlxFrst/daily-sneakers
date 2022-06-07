@@ -68,9 +68,3 @@ const myChart = new Chart(
   document.getElementById('myChart'),
   config
 );
-
-const tabPrices = document.querySelectorAll('.table tbody tr :nth-child(2)')
-
-tabPrices.forEach(elt => {
-  console.log(elt.innerText)
-});
