@@ -1,9 +1,9 @@
-class CreateWhishlists < ActiveRecord::Migration[6.1]
+class CreateWishlists < ActiveRecord::Migration[6.1]
   def change
-    create_table :whishlists do |t|
+    create_table :wishlists do |t|
       t.references :sneaker, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
-      t.decimal :price_alert
+      t.string :price_alert_float
 
       t.timestamps
     end

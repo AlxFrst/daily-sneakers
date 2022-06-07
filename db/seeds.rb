@@ -1,6 +1,19 @@
 #Create size table
 start_time = Time.now
 
+Wishlist.destroy_all
+Condition.destroy_all
+
+Condition.create(state: "New")
+Condition.create(state: "Used")
+Condition.create(state: "Refurbished")
+
+Status.destroy_all
+
+Status.create(name: "For Sale")
+Status.create(name: "For Rent")
+Status.create(name: "Sold")
+
 Sneaker.destroy_all
 
 p "Cette seed prend un temps monstrueux, donc va prendre un café :)"
@@ -110,8 +123,8 @@ Sneaker.all.each do |i|
   range.step(0.5) do |f|
     price_temp = Price.where(sneaker_id: i.id, size: f).last ? Price.where(sneaker_id: i.id, size: f).last.price : nil
     if price_temp
-      Price.create!(market: 'StockX', timestamp: Time.now, size: f, price: price_temp, sneaker_id: i.id)
-      Price.create!(market: 'Wethenew', timestamp: Time.now, size: f, price: price_temp, sneaker_id: i.id)
+      Price.create!(market: "StockX", timestamp: Time.now, size: f, price: price_temp, sneaker_id: i.id)
+      Price.create!(market: "Wethenew", timestamp: Time.now, size: f, price: price_temp, sneaker_id: i.id)
     end
   end
 end

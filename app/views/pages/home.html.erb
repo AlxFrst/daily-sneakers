@@ -19,13 +19,25 @@
       <%= image_tag "most3.png" %>
       <p>Nike Dunk Low SE « Sun Club »</p>
     </div>
+    <%= link_to sneakers_path do %>
+      <div class="view-more">
+        <div id="container">
+          <button class="learn-more">
+            <span class="circle" aria-hidden="true">
+              <span class="icon arrow"></span>
+            </span>
+            <span class="button-text">All sneakers</span>
+          </button>
+        </div>
+      </div>
+    <% end %>
   </div>
 </section>
 <section class="up-coming">
   <h2>Upcoming releases</h2>
-  <div class="d-flex">
+  <div class="d-flex scroll">
     <% @upcoming_sneakers.each do |sneaker|%>
-      <%= link_to class:"upcoming-link" do %>
+      <%= link_to sneaker_path(sneaker),class:"upcoming-link" do %>
         <div class="upcoming-card">
           <div class="upcoming-card-image" style="background-image: url(<%= sneaker.imgurl %>)">
             <% case sneaker.brand.downcase %>
@@ -51,17 +63,18 @@
           <div class="upcoming-card-date"><%= sneaker.release %></div>
         </div>
         <div class="upcoming-card-block">
-          <h5><%= sneaker.brand %> <%= sneaker.model %></h5>
-          <div class="upcoming-card-bottom">
-            <p class="upcoming-card-price"><%= sneaker.prices.map{|i| i.price}.max %>$</p>
-            <div class="upcoming-card-shared">
-              <i class="fa-solid fa-heart"></i>
-              <i class="fa-solid fa-share-nodes"></i>
-            </div>
+          <h5><%= sneaker.brand %> <br>
+            <%= sneaker.model %></h5>
+        <% end %>
+        <div class="upcoming-card-bottom">
+          <p class="upcoming-card-price"><%= sneaker.prices.map{|i| i.price}.max %>$</p>
+          <div class="upcoming-card-shared">
+            <i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-share-nodes"></i>
           </div>
         </div>
       </div>
-    <% end %>
+    </div>
   <% end %>
 </div>
 </section>
