@@ -101,7 +101,7 @@
   top: 6px;
   padding-bottom: 20px;
   color: rgba(164, 158, 158, 1);
-  font-size: 8px;
+  font-size: 16px;
 }
 
 .banner {
@@ -150,5 +150,12 @@
     &:hover{
       color: $third-color;
     }
+  }
+}
+.see-more-link{
+  text-align: end;
+  color: #667080;
+  &:hover{
+    color: $third-color;
   }
 }
