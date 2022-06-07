@@ -37,7 +37,7 @@ document.addEventListener('turbolinks:load', () => {
       let selectedOption = option.querySelector(".option-text").innerText;
 
       optionMenu.classList.remove("active");
-      const sneakerId = window.location.href.slice(31).slice(0, 1)
+      const sneakerId = window.location.href.match(/\/(\d+)/)[1]
       window.location.replace(`http://localhost:3000/sneakers/${sneakerId}?size=${selectedOption.match(/\d*\.\d*/)}`)
     });
   });
