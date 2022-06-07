@@ -98,7 +98,7 @@ Sneaker.all.each do |sneaker|
       if (price.css("span")[1].text && price.css("span")[2])
         size = price.css("span")[1].text.gsub(/[^\d\.]/, "").to_f
         price = price.css("span")[2].text.gsub(/[^\d\.]/, "").to_f
-        new_price = Price.new(market: "klekt", timestamp: Time.now, size: size, price: price, sneaker_id: sneaker.id)
+        new_price = Price.new(market: "Klekt", timestamp: Time.now, size: size, price: price, sneaker_id: sneaker.id)
         new_price.save
       end
     end

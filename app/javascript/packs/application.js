@@ -16,7 +16,7 @@ import "controllers"
 import "bootstrap"
 
 import { priceSlider } from "../channels/price_slider";
-import { myChart } from "../channels/graph";
+import { value, updateConfigByMutating } from "../channels/graph";
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -33,13 +33,12 @@ document.addEventListener('turbolinks:load', () => {
 
   options.forEach((option) => {
     option.addEventListener("click", () => {
+
       let selectedOption = option.querySelector(".option-text").innerText;
 
       optionMenu.classList.remove("active");
-
-      document.querySelector('.best-price .price').innerText = selectedOption.match(/\d*\$/)[0]
-      document.querySelector('.information p strong').innerText = selectedOption.match(/US\d*.\d*/)
-      document.querySelector('.market-btn') ? document.querySelector('.market-btn').remove() : null
+      const sneakerId = window.location.href.slice(31).slice(0, 1)
+      window.location.replace(`http://localhost:3000/sneakers/${sneakerId}?size=${selectedOption.match(/\d*\.\d*/)}`)
     });
   });
 })
