@@ -152,3 +152,10 @@
     }
   }
 }
+.see-more-link{
+  text-align: end;
+  color: #667080;
+  &:hover{
+    color: $third-color;
+  }
+}
