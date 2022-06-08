@@ -56,7 +56,7 @@
               <p data-action='click->buyprice#addprice' class='btn-add-price'>Add price</p>
               <div class="add-price d-none">
                 <%= simple_form_for [snk.sneaker, snk] do |f| %>
-                  <%= f.input :price_buy, label: false %>
+                  <%= f.input :price_buy, as: :integer, label: false %>
                 <% end %>
               </div>
             <% end %>
