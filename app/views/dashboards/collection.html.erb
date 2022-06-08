@@ -1,6 +1,6 @@
 <div class="container custom-margin">
   <div class="d-flex justify-content-between">
-    <p>My collection</p>
+    <h4>My collection</h4>
     <div class="btn-group nav-dashboard" role="group" aria-label="Basic outlined example">
       <%= link_to 'Wishlist', wishlist_path, class: "btn btn-outline-secondary"%>
       <%= link_to 'Collection', collection_path, class: "btn btn-outline-secondary active"%>
@@ -13,7 +13,7 @@
     <h4>Sneakers</h4>
   </div>
   <div class="dashboard-table">
-    <table class="table table-hover">
+    <table class="table table-hover" data-controller='buyprice'>
       <thead>
         <tr>
           <th class="justify-text">Model</th>
@@ -49,7 +49,18 @@
             <% else %>
               <img src="" alt="" class="index-card-logo">
             <% end %> <%= snk.sneaker.brand %> <%= snk.sneaker.model %></td>
-          <td>Purchase price</td>
+          <td>
+            <% if snk.price_buy %>
+              <%= snk.price_buy %>
+            <% else %>
+              <p data-action='click->buyprice#addprice' class='btn-add-price'>Add price</p>
+              <div class="add-price d-none">
+                <%= simple_form_for [snk.sneaker, snk] do |f| %>
+                  <%= f.input :price_buy, label: false %>
+                <% end %>
+              </div>
+            <% end %>
+          </td>
           <td>SIZE</td>
           <td><%= snk.sneaker.prices.last.price %>€</td>
           <td>UP</td>
