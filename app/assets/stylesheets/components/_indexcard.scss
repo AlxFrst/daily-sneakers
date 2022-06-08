@@ -81,6 +81,8 @@
 }
 
 .index-card-shared{
+  margin-top: 10px;
+  font-size: 24px;
   .fa-heart{
     &:hover{
       color: red;
@@ -92,4 +94,9 @@
       color: $third-color;
     }
   }
+}
+.index-card-price{
+  color: $secondary-color;
+  font-size: 28px;
+  font-weight: 500;
 }
