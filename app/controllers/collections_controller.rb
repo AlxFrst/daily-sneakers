@@ -22,4 +22,14 @@ class CollectionsController < ApplicationController
     @collection.destroy
     redirect_to collection_path
   end
+
+  def update
+    collec = Collection.find(params['id'])
+    collec.price_buy = params['collection']['price_buy']
+    if collec.save!
+      redirect_to collection_path
+    else
+      render collection_path
+    end
+  end
 end
