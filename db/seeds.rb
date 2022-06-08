@@ -129,6 +129,19 @@ Sneaker.all.each do |i|
   end
 end
 
+p "------------------"
+p "CHECKING PRICES"
+p "------------------"
+
+Sneaker.all.each do |snk|
+  if snk.prices.length == 0
+    puts "no price found deleted"
+    snk.destroy
+  else
+    puts "prices found for #{snk.reference}"
+  end
+end
+
 end_time = Time.now
 
 p "------------------"
