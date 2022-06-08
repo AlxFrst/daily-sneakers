@@ -10,7 +10,11 @@
   <div class="wrapper">
     <div class="profile-card js-profile-card">
       <div class="profile-card__img">
-        <img src="https://res.cloudinary.com/muhammederdem/image/upload/v1537638518/Ba%C5%9Fl%C4%B1ks%C4%B1z-1.jpg" alt="profile card">
+        <% if current_user.avatar.key.nil? %>
+          <%= image_tag "https://thumbs.dreamstime.com/b/avatar-par-d%C3%A9faut-ic%C3%B4ne-profil-vectoriel-m%C3%A9dias-sociaux-utilisateur-portrait-176256935.jpg" %>
+        <% else %>
+          <%= cl_image_tag current_user.avatar.key %>
+        <% end %>
       </div>
       <div class="profile-card__cnt js-profile-cnt">
         <div class="profile-card__name"> <%= current_user.first_name %> <%= current_user.last_name %></div>
