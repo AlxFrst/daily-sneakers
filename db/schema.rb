@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(version: 2022_06_07_072526) do
   create_table "wishlists", force: :cascade do |t|
     t.bigint "sneaker_id", null: false
     t.bigint "user_id", null: false
-    t.string "price_alert_float"
+    t.integer "price_alert"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["sneaker_id"], name: "index_wishlists_on_sneaker_id"
