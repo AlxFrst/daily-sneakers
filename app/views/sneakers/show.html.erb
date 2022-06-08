@@ -79,6 +79,36 @@
     <tbody>
       <% infos.each do |i| %>
         <tr>
+<<<<<<< HEAD
+          <th>Reseller</th>
+          <th>Actual price</th>
+          <th>Variation</th>
+          <th>Latest update</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% infos.each do |i| %>
+          <tr>
+            <td>
+              <% case i.market %>
+              <% when 'StockX' %>
+              <%= image_tag "stockx.svg" %>
+              <% when 'Klekt' %>
+              <%= image_tag "klekt.png" %>
+              <% when 'Wethenew' %>
+              <%= image_tag "wethenew.png" %>
+            <% else %>
+              <%= image_tag "market.png" %>
+            <% end %>
+          </td>
+          <td><%= i.price %>$</td>
+          <td></td>
+          <td><%= i.timestamp %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+=======
           <td>
             <% case i.market %>
             <% when 'StockX' %>
@@ -98,6 +128,7 @@
     <% end %>
   </tbody>
 </table>
+>>>>>>> master
 </div>
 </div>
 </div>
