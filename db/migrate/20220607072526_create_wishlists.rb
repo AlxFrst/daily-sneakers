@@ -3,7 +3,7 @@ class CreateWishlists < ActiveRecord::Migration[6.1]
     create_table :wishlists do |t|
       t.references :sneaker, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
-      t.string :price_alert_float
+      t.integer :price_alert
 
       t.timestamps
     end
