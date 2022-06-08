@@ -122,6 +122,7 @@ Sneaker.all.each do |i|
   range = 5.5..14
   range.step(0.5) do |f|
     price_temp = Price.where(sneaker_id: i.id, size: f).last ? Price.where(sneaker_id: i.id, size: f).last.price : nil
+
     def price_random
       num = rand
       return rand(4) if num < 0.3
@@ -130,23 +131,11 @@ Sneaker.all.each do |i|
 
       return rand(30)
     end
+
     if price_temp
       Price.create!(market: "StockX", timestamp: Time.now, size: f, price: (price_temp + price_random), sneaker_id: i.id)
       Price.create!(market: "Wethenew", timestamp: Time.now, size: f, price: (price_temp + price_random), sneaker_id: i.id)
     end
-  end
-end
-
-p "------------------"
-p "CHECKING PRICES"
-p "------------------"
-
-Sneaker.all.each do |snk|
-  if snk.prices.length == 0
-    puts "no price found deleted"
-    snk.destroy
-  else
-    puts "prices found for #{snk.reference}"
   end
 end
 

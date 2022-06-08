@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="show-page">
+  <div class="show-page" data-controller="market">
     <div class="title pt-5">
       <h2 class="brand"><%= @sneaker.brand %> <%= @sneaker.model %></h2>
       <h4 class="my-3 color"><%= @sneaker.color %></h4>
@@ -31,8 +31,8 @@
         <div class="best-price d-flex justify-content-between">
           <p class="price"><%= hash[size.to_f] %>€</p>
           <a class="market-btn" href="">
-          <% case Price.where(sneaker_id: @sneaker.id, size: size, price: hash[size.to_f]).first.market %>
-          <% when 'StockX' %>
+            <% case Price.where(sneaker_id: @sneaker.id, size: size, price: hash[size.to_f]).first.market %>
+            <% when 'StockX' %>
             <%= image_tag "stockx.svg" %>
             <% when 'Klekt' %>
             <%= image_tag "klekt.png" %>
