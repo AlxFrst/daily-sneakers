@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="show-page">
+  <div class="show-page" data-controller="market">
     <div class="title pt-5">
       <h2 class="brand"><%= @sneaker.brand %> <%= @sneaker.model %></h2>
       <h4 class="my-3 color"><%= @sneaker.color %></h4>
@@ -29,10 +29,10 @@
           <% end %>
         <% end %>
         <div class="best-price d-flex justify-content-between">
-          <p class="price"><%= hash[size.to_f] %>$</p>
+          <p class="price"><%= hash[size.to_f] %>€</p>
           <a class="market-btn" href="">
-          <% case Price.where(sneaker_id: @sneaker.id, size: size, price: hash[size.to_f]).first.market %>
-          <% when 'StockX' %>
+            <% case Price.where(sneaker_id: @sneaker.id, size: size, price: hash[size.to_f]).first.market %>
+            <% when 'StockX' %>
             <%= image_tag "stockx.svg" %>
             <% when 'Klekt' %>
             <%= image_tag "klekt.png" %>
@@ -41,35 +41,45 @@
           <% else %>
             <%= image_tag "market.png" %>
           <% end %>
-          </a>
-        </div>
-        <div class="information">
-          <%= render 'shared/sizer', hash: hash, sneaker_id: @sneaker.id %>
-          <p>Size: <strong>US<%= size %></strong></p>
-          <p>Date: <strong><%= @sneaker.release %></strong></p>
-          <p>Owners: <strong><%= Collection.where(sneaker_id: @sneaker.id).count %></strong></p>
-          <div class="dash-buttons d-flex justify-content-between">
-            <%= link_to sneaker_wishlists_path(@sneaker), method: :post, remote: true do %>
+        </a>
+      </div>
+      <div class="information">
+        <%= render 'shared/sizer', hash: hash, sneaker_id: @sneaker.id %>
+        <p>Size: <strong>US<%= size %></strong></p>
+        <p>Date: <strong><%= @sneaker.release %></strong></p>
+        <p>Owners: <strong><%= Collection.where(sneaker_id: @sneaker.id).count %></strong></p>
+        <div class="dash-buttons d-flex justify-content-between">
+          <%= link_to sneaker_wishlists_path(@sneaker), method: :post, remote: true do %>
             <p class='wishlist'>Add to wishlist <i class="fa-solid fa-plus"></i></p>
           <% end %>
           <%= link_to sneaker_collections_path(@sneaker), method: :post, remote: true do %>
             <p class='collection'>Add to collection <i class="fa-solid fa-plus"></i></p>
           <% end %>
-          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="price-history pt-3 pb-5">
-    <h4>Price history</h4>
-    <div>
-      <canvas id="myChart" style="position: relative; height:10vh; width:80vw"></canvas>
-    </div>
+</div>
+<div class="price-history pt-3 pb-5">
+  <h4>Price history</h4>
+  <div>
+    <canvas id="myChart" style="position: relative; height:10vh; width:80vw"></canvas>
   </div>
-  <div class="dashboard-table mt-5 mb-5" data-controller="market">
-    <table class="table table-hover">
-      <thead>
+</div>
+<div class="dashboard-table mt-5 mb-5">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Reseller</th>
+        <th>Actual price</th>
+        <th>Variation</th>
+        <th>Latest update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% infos.each do |i| %>
         <tr>
+<<<<<<< HEAD
           <th>Reseller</th>
           <th>Actual price</th>
           <th>Variation</th>
@@ -98,83 +108,104 @@
       <% end %>
     </tbody>
   </table>
+=======
+          <td>
+            <% case i.market %>
+            <% when 'StockX' %>
+            <%= image_tag "stockx.svg" %>
+            <% when 'Klekt' %>
+            <%= image_tag "klekt.png" %>
+            <% when 'Wethenew' %>
+            <%= image_tag "wethenew.png" %>
+          <% else %>
+            <%= image_tag "market.png" %>
+          <% end %>
+        </td>
+        <td><%= i.price %>€</td>
+        <td>up</td>
+        <td><%= i.timestamp %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+>>>>>>> master
 </div>
 </div>
 </div>
 <script>
-function Last7Days () {
-  return '0123456'.split('').map(function(n) {
-      var d = new Date();
-      d.setDate(d.getDate() - n);
+  function Last7Days () {
+    return '0123456'.split('').map(function(n) {
+        var d = new Date();
+        d.setDate(d.getDate() - n);
 
-      return (function(day, month, year) {
-          return [day<10 ? '0'+day : day, month<10 ? '0' + (month+1) : (month+1), year].join('-');
-      })(d.getDate(), d.getMonth(), d.getFullYear());
-  });
-}
+        return (function(day, month, year) {
+            return [day<10 ? '0'+day : day, month<10 ? '0' + (month+1) : (month+1), year].join('-');
+        })(d.getDate(), d.getMonth(), d.getFullYear());
+    });
+  }
 
-function getRandom(){
-  var num=Math.random();
-  if(num < 0.3) return Math.floor(Math.random() * 3);  //probability 0.3
-  else if(num < 0.7) return Math.floor(Math.random() * 5); // probability 0.4
-  else if(num < 0.9) return Math.floor(Math.random() * 10); //probability 0.3
-  else return Math.floor(Math.random() * 30);  //probability 0.1
-}
+  function getRandom(){
+    var num=Math.random();
+    if(num < 0.3) return Math.floor(Math.random() * 3);  //probability 0.3
+    else if(num < 0.7) return Math.floor(Math.random() * 5); // probability 0.4
+    else if(num < 0.9) return Math.floor(Math.random() * 10); //probability 0.3
+    else return Math.floor(Math.random() * 30);  //probability 0.1
+  }
 
-const price = parseInt(document.querySelector('.best-price .price').innerText.slice(0, -1))
+  const price = parseInt(document.querySelector('.best-price .price').innerText.slice(0, -1))
 
-const labels = [
-  Last7Days()[6],
-  Last7Days()[5],
-  Last7Days()[4],
-  Last7Days()[3],
-  Last7Days()[2],
-  Last7Days()[1],
-  Last7Days()[0]
-];
+  const labels = [
+    Last7Days()[6],
+    Last7Days()[5],
+    Last7Days()[4],
+    Last7Days()[3],
+    Last7Days()[2],
+    Last7Days()[1],
+    Last7Days()[0]
+  ];
 
-const value = price + getRandom() - getRandom();
-const value2 = value + getRandom() - getRandom();
-const value3 = value2 + getRandom() - getRandom();
-const value4 = value3 + getRandom() - getRandom();
-const value5 = value4 + getRandom() - getRandom();
-const value6 = value5 + getRandom() - getRandom();
+  const value = price + getRandom() - getRandom();
+  const value2 = value + getRandom() - getRandom();
+  const value3 = value2 + getRandom() - getRandom();
+  const value4 = value3 + getRandom() - getRandom();
+  const value5 = value4 + getRandom() - getRandom();
+  const value6 = value5 + getRandom() - getRandom();
 
-const data = {
-  labels: labels,
-  datasets: [{
-    backgroundColor: 'rgb(255, 99, 132)',
-    borderColor: 'rgb(255, 99, 132)',
-    data: [value6, value5, value4, value3, value2, value, price],
-  }]
-};
-const config = {
-  type: 'line',
-  data: data,
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    layout: {
-      padding: 40
-    },
-    plugins: {
-      legend: false // Hide legend
-    },
-    scales: {
-      y: {
-          suggestedMin: price - 50,
-          suggestedMax: price + 50
+  const data = {
+    labels: labels,
+    datasets: [{
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [value6, value5, value4, value3, value2, value, price],
+    }]
+  };
+  const config = {
+    type: 'line',
+    data: data,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      layout: {
+        padding: 40
+      },
+      plugins: {
+        legend: false // Hide legend
+      },
+      scales: {
+        y: {
+            suggestedMin: price - 50,
+            suggestedMax: price + 50
+        }
       }
-    }
-}
-};
-const options = {
-  "responsive": true,
-  "maintainAspectRatio": false
-}
-const myChart = new Chart(
-  document.getElementById('myChart'),
-  config
-);
-document.querySelector('.container').insertAdjacentHTML('afterend', `<span class="cache" style="display:none;">${value}</span>`)
+  }
+  };
+  const options = {
+    "responsive": true,
+    "maintainAspectRatio": false
+  }
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+  document.querySelector('.container').insertAdjacentHTML('afterend', `<span class="cache" style="display:none;">${value}</span>`)
 </script>
