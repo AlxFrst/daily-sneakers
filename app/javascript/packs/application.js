@@ -37,7 +37,7 @@ document.addEventListener('turbolinks:load', () => {
         let selectedOption = option.querySelector(".option-text").innerText;
 
         optionMenu.classList.remove("active");
-        const url = window.location.href.match(/([\w|\:|\/]*)/)[1]
+        const url = window.location.href.match(/([\w|\:|\/\.]*)/)[1]
         window.location.replace(`${url}?size=${selectedOption.match(/\d*\.\d*/)}`)
       });
     });
