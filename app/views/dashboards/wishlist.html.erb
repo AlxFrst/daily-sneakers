@@ -55,7 +55,7 @@
             <% end %> <%= snk.sneaker.brand %> <%= snk.sneaker.model %></td>
           <td>
             <% if snk.price_alert %>
-              <%= snk.price_alert %>
+              <%= snk.price_alert %>€
             <% else %>
               <p data-action='click->alertprice#addprice' class='btn-add-price'>Add price</p>
               <div class="add-price d-none">
