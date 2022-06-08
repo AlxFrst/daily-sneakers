@@ -24,4 +24,14 @@ class WishlistsController < ApplicationController
     @wishlist.destroy
     redirect_to wishlist_path
   end
+
+  def update
+    wish = Wishlist.find(params['id'])
+    wish.price_alert = params['wishlist']['price_alert']
+    if wish.save!
+      redirect_to wishlist_path
+    else
+      render wishlist_path
+    end
+  end
 end
