@@ -3,9 +3,11 @@
 @import "show";
 @import "wishlist";
 @import "devise";
+@import "login";
 
 .index-pagination {
   display: flex;
+  justify-content: center;
   nav {
     text-align: center;
     padding: 2em 0;

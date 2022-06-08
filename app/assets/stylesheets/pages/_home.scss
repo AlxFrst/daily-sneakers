@@ -1,30 +1,101 @@
 // Specific CSS for your home-page
-.main-img img{
-  width: 100%;
-  height: auto;
-  z-index: -1;
+.main-img {
+  position: relative;
+  .background-img img{
+    width: 100%;
+    height: auto;
+    z-index: -1;
+  }
+  .sneaker-img img{
+    width: 100%;
+    height: auto;
+    z-index: -1;
+  }
+
+  .sneaker-img{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+    *{
+      box-sizing: border-box;
+    }
+    #slider{
+      img{
+        width: 100%;
+        height: 100%
+      }
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+      div{
+        position: absolute;
+        height: 100%;
+        text-align: center;
+        font-size: 4em;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: #222;
+        transition: all 0.2s linear;
+      }
+    }
+    .buttons{
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+      width: 100%;
+      top: 200px;
+      button{
+        width: 50px;
+        height: 50px;
+        border: 0;
+        background-color: #333;
+        border-radius: 50%;
+        overflow: hidden;
+        color: #eee;
+        font-weight: bold;
+        font-size: 2em;
+        margin: 0 15px 15px 15px;
+        outline: none;
+        cursor: pointer;
+        opacity: .8;
+      }
+    }
+    
+    
+    .gray1{
+      background-color: #aaa;
+    }
+    .gray2{
+      background-color: #bbb;
+    }
+    .gray3{
+      background-color: #ccc;
+    }
+  }
 }
-.most-hype-card{
+.most-hype-card {
   margin-top: 20px;
   text-align: center;
   margin-bottom: 52px;
 
-  h2{
+  h2 {
     margin-bottom: 30px;
     font-weight: 600;
     font-size: 36px;
     line-height: 60px;
   }
 
-  p{
+  p {
     font-size: 18px;
   }
 }
-.up-coming{
-  background-color: #DEDEDE;
+.up-coming {
+  background-color: #dedede;
   height: 600px;
 
-  h2{
+  h2 {
     margin: 30px;
     padding-top: 30px;
     font-weight: 600;
@@ -32,11 +103,11 @@
     line-height: 60px;
   }
 
-  p{
+  p {
     font-size: 18px;
   }
-  h5{
-   font-size: 18px;
+  h5 {
+    font-size: 18px;
   }
 }
 .upcoming-card {
@@ -52,7 +123,7 @@
     text-align: center;
   }
 }
-.view-all-link{
+.view-all-link {
   display: flex;
   justify-content: flex-end;
   margin: 20px;
@@ -60,7 +131,7 @@
   color: #667080;
   opacity: 0.8;
   font-size: 16px;
-  &:hover{
+  &:hover {
     color: #667080;
     opacity: 1;
   }
@@ -116,192 +187,199 @@
 .banner h2 {
   margin: 0;
   color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   font-size: 40px;
   font-weight: bold;
 }
 .signup-banner {
   background-color: $third-color;
-  color: black!important;
+  color: black !important;
   font-size: 22px;
   text-decoration: none;
   border-radius: 6%;
   padding: 15px 30px;
   margin-top: 40px;
   margin-left: 10px;
-  transition: transform .2s;
-  &:hover{
+  transition: transform 0.2s;
+  &:hover {
     transform: scale(1.1);
   }
 }
 
-.up-coming a{
+.up-coming a {
   text-decoration: none;
-  h5{
+  h5 {
     color: black;
   }
 }
 
-.upcoming-card-price{
-  .fa-heart{
-    &:hover{
+.upcoming-card-price {
+  .fa-heart {
+    &:hover {
       color: red;
     }
   }
 
-  .fa-share-nodes{
-    &:hover{
+  .fa-share-nodes {
+    &:hover {
       color: $third-color;
     }
   }
 }
-.see-more-link{
+.see-more-link {
   text-align: end;
   color: #667080;
-  &:hover{
+  &:hover {
     color: $third-color;
   }
 }
 
-.footer-copyright{
-a{
-  text-decoration: none;
+.footer-copyright {
+  a {
+    text-decoration: none;
+  }
 }
-}
-.scroll{
+.scroll {
   white-space: nowrap;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch; /* [3] */
   -ms-overflow-style: -ms-autohiding-scrollbar; /* [4] */
 }
 .scroll::-webkit-scrollbar {
-  display: none; }
-
-.view-more{
-  @import url('https://fonts.googleapis.com/css?family=Mukta:700');
-
-$bg: #f3f8fa;
-$white: #fff;
-$black: #282936;
-
-@mixin transition($property: all, $duration: 0.45s, $ease: cubic-bezier(0.65,0,.076,1)) {
-  transition: $property $duration $ease;
+  display: none;
 }
 
-* {
-  box-sizing: border-box;
-  &::before, &::after {
-    box-sizing: border-box;
+.view-more {
+  @import url("https://fonts.googleapis.com/css?family=Mukta:700");
+
+  $bg: #f3f8fa;
+  $white: #fff;
+  $black: #282936;
+
+  @mixin transition(
+    $property: all,
+    $duration: 0.45s,
+    $ease: cubic-bezier(0.65, 0, 0.076, 1)
+  ) {
+    transition: $property $duration $ease;
   }
-}
 
-body {
-  font-family: 'Mukta', sans-serif;
-  font-size: 1rem;
-  line-height: 1.5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  min-height: 100vh;
-  background: $bg;
-}
+  * {
+    box-sizing: border-box;
+    &::before,
+    &::after {
+      box-sizing: border-box;
+    }
+  }
 
-button {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  outline: none;
-  border: 0;
-  vertical-align: middle;
-  text-decoration: none;
-  background: transparent;
-  padding: 0;
-  font-size: inherit;
-  font-family: inherit;
-  &.learn-more {
-    width: 12rem;
-    height: auto;
-    .circle {
-      @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
-      position: relative;
-      display: block;
-      margin: 0;
-      width: 3rem;
-      height: 3rem;
-      background: $black;
-      border-radius: 1.625rem;
-      .icon {
-        @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        background: $white;
-        &.arrow {
-          @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
-          left: 0.625rem;
-          width: 1.125rem;
-          height: 0.125rem;
-          background: none;
-          &::before {
-            position: absolute;
-            content: '';
-            top: -0.25rem;
-            right: 0.0625rem;
-            width: 0.625rem;
-            height: 0.625rem;
-            border-top: 0.125rem solid #fff;
-            border-right: 0.125rem solid #fff;
-            transform: rotate(45deg);
+  margin-top: 20px;
+  body {
+    font-family: "Mukta", sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    min-height: 100vh;
+    background: $bg;
+  }
+
+  button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    &.learn-more {
+      width: 12rem;
+      height: auto;
+      .circle {
+        @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
+        position: relative;
+        display: block;
+        margin: 0;
+        width: 3rem;
+        height: 3rem;
+        background: $black;
+        border-radius: 1.625rem;
+        .icon {
+          @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          background: $white;
+          &.arrow {
+            @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
+            left: 0.625rem;
+            width: 1.125rem;
+            height: 0.125rem;
+            background: none;
+            &::before {
+              position: absolute;
+              content: "";
+              top: -0.25rem;
+              right: 0.0625rem;
+              width: 0.625rem;
+              height: 0.625rem;
+              border-top: 0.125rem solid #fff;
+              border-right: 0.125rem solid #fff;
+              transform: rotate(45deg);
+            }
           }
         }
       }
-    }
-    .button-text {
-      @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 0.75rem 0;
-      margin: 0 0 0 1.85rem;
-      color: $black;
-      font-weight: 700;
-      line-height: 1.6;
-      text-align: center;
-      text-transform: uppercase;
-    }
-  }
-  &:hover {
-    .circle {
-      width: 100%;
-      .icon {
-        &.arrow {
-        background: $white;
-        transform: translate(1rem, 0);
-        }
+      .button-text {
+        @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0.75rem 0;
+        margin: 0 0 0 1.85rem;
+        color: $black;
+        font-weight: 700;
+        line-height: 1.6;
+        text-align: center;
+        text-transform: uppercase;
       }
     }
-    .button-text {
-      color: $white;
+    &:hover {
+      .circle {
+        width: 100%;
+        .icon {
+          &.arrow {
+            background: $white;
+            transform: translate(1rem, 0);
+          }
+        }
+      }
+      .button-text {
+        color: $white;
+      }
     }
   }
-}
 
-@supports (display: grid) {
-  body {
-    display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 0.625rem;
-  grid-template-areas: ". main main ." ". main main .";
+  @supports (display: grid) {
+    body {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 0.625rem;
+      grid-template-areas: ". main main ." ". main main .";
+    }
+
+    #container {
+      grid-area: main;
+      align-self: center;
+      justify-self: center;
+    }
   }
-  
-  #container {
-    grid-area: main;
-    align-self: center;
-    justify-self: center;
-  }
-}
 }
