@@ -32,7 +32,13 @@
 }
 .select-menu.active .options {
   display: flex;
-  width: fit-content;
+  flex-wrap: wrap;
+  width: 500px;
+  justify-content: center;
+  .option{
+    margin: 10px;
+    padding: 18px
+  }
 }
 .options .option {
   display: flex;
