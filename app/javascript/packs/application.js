@@ -16,29 +16,30 @@ import "controllers"
 import "bootstrap"
 
 import { priceSlider } from "../channels/price_slider";
-import { value, updateConfigByMutating } from "../channels/graph";
 
 
 document.addEventListener('turbolinks:load', () => {
   priceSlider();
 
-  const optionMenu = document.querySelector(".select-menu"),
-    selectBtn = optionMenu.querySelector(".select-btn"),
-    options = optionMenu.querySelectorAll(".option"),
-    sBtn_text = optionMenu.querySelector(".sBtn-text");
+  if (document.querySelector(".select-menu")) {
+    const optionMenu = document.querySelector(".select-menu"),
+      selectBtn = optionMenu.querySelector(".select-btn"),
+      options = optionMenu.querySelectorAll(".option"),
+      sBtn_text = optionMenu.querySelector(".sBtn-text");
 
-  selectBtn.addEventListener("click", () =>
-    optionMenu.classList.toggle("active")
-  );
+    selectBtn.addEventListener("click", () =>
+      optionMenu.classList.toggle("active")
+    );
 
-  options.forEach((option) => {
-    option.addEventListener("click", () => {
+    options.forEach((option) => {
+      option.addEventListener("click", () => {
 
-      let selectedOption = option.querySelector(".option-text").innerText;
+        let selectedOption = option.querySelector(".option-text").innerText;
 
-      optionMenu.classList.remove("active");
-      const sneakerId = window.location.href.match(/\/(\d+)/)[1]
-      window.location.replace(`http://localhost:3000/sneakers/${sneakerId}?size=${selectedOption.match(/\d*\.\d*/)}`)
+        optionMenu.classList.remove("active");
+        const url = window.location.href.match(/([\w|\:|\/]*)/)[1]
+        window.location.replace(`${url}?size=${selectedOption.match(/\d*\.\d*/)}`)
+      });
     });
-  });
+  }
 })
