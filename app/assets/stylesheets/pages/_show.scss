@@ -106,6 +106,7 @@
         border-radius: 6px;
         color: white;
         text-decoration: none;
+        transition: transform .2s;
         &:hover{
           transform: scale(1.1);
         }

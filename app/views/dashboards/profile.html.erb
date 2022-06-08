@@ -1,2 +1,31 @@
 <div class="container custom-margin">
+  <div class="d-flex justify-content-between">
+    <h4>My profile</h4>
+    <div class="btn-group nav-dashboard" role="group" aria-label="Basic outlined example">
+      <%= link_to 'Wishlist', wishlist_path, class: "btn btn-outline-secondary"%>
+      <%= link_to 'Collection', collection_path, class: "btn btn-outline-secondary"%>
+      <%= link_to 'Profile', profile_path, class: "btn btn-outline-secondary active"%>
+    </div>
+  </div>
+  <div class="wrapper">
+    <div class="profile-card js-profile-card">
+      <div class="profile-card__img">
+        <img src="https://res.cloudinary.com/muhammederdem/image/upload/v1537638518/Ba%C5%9Fl%C4%B1ks%C4%B1z-1.jpg" alt="profile card">
+      </div>
+      <div class="profile-card__cnt js-profile-cnt">
+        <div class="profile-card__name"> <%= current_user.first_name %> <%= current_user.last_name %></div>
+        <div class="profile-card__txt">Your default sneaker size is  <strong><%= current_user.size %></strong></div>
+        <div class="profile-card-inf">
+          <div class="profile-card-inf__item">
+            <div class="profile-card-inf__title"><%= Wishlist.where(user_id: current_user).length %></div>
+            <div class="profile-card-inf__txt">Sneakers in your wishlist</div>
+          </div>
+          <div class="profile-card-inf__item">
+            <div class="profile-card-inf__title"><%= Collection.where(user_id: current_user).length %></div>
+            <div class="profile-card-inf__txt">Sneakers in your collection</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
