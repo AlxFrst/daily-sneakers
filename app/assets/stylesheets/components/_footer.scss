@@ -4,10 +4,14 @@
   padding: 0px 50px;
   color: #98A2B3;
 
-  h3{
+  .footer-link{
+    display: flex;
+    justify-content: center;
     text-align: center;
     color: #ffffff;
     padding: 40px 0px;
+    text-decoration: none;
+    font-size: 28px;
   }
   hr{
     color: #F5F5F5;
