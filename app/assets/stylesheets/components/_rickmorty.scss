@@ -1,0 +1,253 @@
+#wrapper {
+  height: 100vh;
+  width: 100vw;
+}
+
+#bluuuurrrrrp {
+  z-index: 1000;
+  position: fixed;
+  top: 40vh;
+  left: 500px;
+  height: 20vh;
+  width: 20vw;
+  animation: slider 5s, slider2 3s 7s;
+  animation-fill-mode: forwards;
+  img {
+    width: 30vh;
+  }
+}
+
+.blurp-reduce {
+  animation-name: reduce;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slider {
+  0% {
+    left: 0px;
+  }
+  100% {
+    left: 500px;
+  }
+}
+
+@keyframes slider2 {
+  0% {
+    left: 500px;
+  }
+  100% {
+    left: 700px;
+  }
+}
+
+@keyframes reduce {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+.bubble {
+  z-index: 999;
+  background: white;
+  border-radius: 4px;
+  color: black;
+  display: inline-block;
+  margin: 50px;
+  padding: 50px;
+  position: relative;
+  border: 0.1em solid black;
+}
+
+.portal {
+  z-index: 998;
+  width: 200px;
+  height: 200px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -100px 0 0 -100px;
+  border-radius: 50%;
+  border: 1px solid lime;
+  box-shadow: inset 0 0 60px yellow;
+  overflow: visible;
+  background-color: lime;
+  animation: wobble 1s infinite linear;
+}
+
+.swirl span {
+  background-color: #0a0;
+
+  top: 10%;
+  left: 15%;
+  border-radius: 50%;
+  display: block;
+  width: 45%;
+  height: 15%;
+
+  position: absolute;
+  z-index: 20;
+  transform: rotate(45deg);
+}
+
+.swirl span:nth-child(2) {
+  top: 30%;
+  left: 32%;
+
+  width: 5%;
+  height: 10%;
+}
+.swirl span:nth-child(3) {
+  top: 40%;
+  left: 40%;
+  width: 5%;
+  height: 10%;
+}
+
+.swish {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  border: 1px solid #fff;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: inset 0 0 100px lime, 0 0 2px lime;
+  z-index: 10;
+  animation: rotate2 15s infinite linear;
+}
+
+.swish span {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  display: block;
+  width: 4%;
+  height: 4%;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.swish span:nth-child(1) {
+  top: 10%;
+  left: 50%;
+}
+
+.swish span:nth-child(2) {
+  top: 90%;
+  left: 30%;
+}
+
+.swish span:nth-child(3) {
+  top: 10%;
+  left: 80%;
+}
+.swish span:nth-child(4) {
+  top: 40%;
+  left: 22%;
+  width: 8x;
+  height: 8x;
+}
+
+.swirl {
+  position: absolute;
+  top: 8%;
+  left: 8%;
+  width: 80%;
+  height: 80%;
+  z-index: 4;
+  border-radius: 50%;
+  margin: 0% 0 0 0%;
+  border: 0;
+  box-shadow: inset -20px -22px 3px lime;
+  animation: rotate 15s infinite linear;
+  background-color: #0a0;
+  padding: 2px;
+  content: ".";
+  color: #fff;
+  font-size: 20px;
+}
+
+.swirl:after {
+  position: absolute;
+  content: ".   .";
+  font-size: 2.5em;
+  display: inline-block;
+  margin-top: -40px;
+  color: green;
+}
+.swirl:before {
+  content: ".  .";
+  font-size: 2em;
+  display: inline-block;
+  margin-top: -40px;
+  color: white;
+}
+
+.swirl > .swirl {
+  animation-delay: 0.83s;
+  box-shadow: inset -110px -110px 0 lime;
+  border-color: green;
+}
+.swirl > .swirl > .swirl,
+.swirl > .swirl > .swirl > .swirl > .swirl {
+  animation-delay: 0.33s;
+  box-shadow: inset -110px -110px 0 lime;
+}
+.swirl > .swirl > .swirl > .swirl > .swirl > .swirl > .swirl {
+  animation-delay: 0.33s;
+  box-shadow: inset -20px -20px 0 lime;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(90deg);
+    color: #fff;
+  }
+
+  50% {
+    color: green;
+  }
+
+  100% {
+    transform: rotate(180deg);
+    color: #fff;
+  }
+}
+@keyframes rotate2 {
+  0% {
+    transform: rotate(0deg);
+    color: #fff;
+  }
+
+  100% {
+    transform: rotate(360deg);
+    color: #fff;
+  }
+}
+
+@keyframes wobxble {
+  0% {
+    width: 202px;
+    height: 198px;
+    margin: -98px 0 0 -102px;
+    box-shadow: 0 0 10px lime;
+  }
+
+  50% {
+    width: 198px;
+    height: 202px;
+    margin: -102px 0 0 -98px;
+    box-shadow: 0 0 15px lime;
+  }
+
+  100% {
+    width: 202px;
+    height: 198px;
+    margin: -98px 0 0 -102px;
+    box-shadow: 0 0 10px lime;
+  }
+}
