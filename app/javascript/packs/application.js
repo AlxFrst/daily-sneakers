@@ -16,6 +16,7 @@ import "controllers"
 import "bootstrap"
 
 import { priceSlider } from "../channels/price_slider";
+import { keyHandler } from "../channels/rickandmorty";
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -43,3 +44,5 @@ document.addEventListener('turbolinks:load', () => {
     });
   }
 })
+
+document.addEventListener('keydown', keyHandler, false);
