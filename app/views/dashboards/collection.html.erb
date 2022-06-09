@@ -8,7 +8,12 @@
     </div>
   </div>
   <h2>Real-time price: <%= @total %>€</h2>
-  <%= image_tag"graph-dashboard.png", class:"mt-5" %>
+  <div class="graph">
+    <canvas
+  data-controller="chart"
+  data-chart-data-value='{ "labels": ["<%= @xxxxx_month%>", "<%= @xxxx_month%>", "<%= @xx_month%>", "<%= @x_month%>", "<%= @month%>"], "datasets": [{ "label": "My First dataset", "backgroundColor": "transparent", "borderColor": "#3B82F6", "data": [<%= @xxxx_total%>, <%= @xxx_total%>, <%= @xx_total%>, <%= @x_total%>, <%= @total%>] }] }'
+></canvas>
+  </div>
   <div class="d-flex mt-5">
     <h4>Sneakers</h4>
   </div>
@@ -51,12 +56,12 @@
             <% end %> <%= snk.sneaker.brand %> <%= snk.sneaker.model %></td>
           <td>
             <% if snk.price_buy %>
-              <%= snk.price_buy %>
+              <%= snk.price_buy %>€
             <% else %>
               <p data-action='click->buyprice#addprice' class='btn-add-price'>Add price</p>
               <div class="add-price d-none">
                 <%= simple_form_for [snk.sneaker, snk] do |f| %>
-                  <%= f.input :price_buy, label: false %>
+                  <%= f.input :price_buy, as: :integer, label: false %>
                 <% end %>
               </div>
             <% end %>
