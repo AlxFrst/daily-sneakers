@@ -165,3 +165,18 @@ a, a:hover {
 div.d-flex.justify-content-between > p{
   font-size: 18px;
 }
+.button-edit-profil{
+  justify-content: end;
+  background-color: black;
+  position: absolute;
+  right: 100px;
+  color: white;
+  transition: 0.3s;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 20px;
+  &:hover{
+    background-color: $third-color;
+    color: black;
+  }
+}
