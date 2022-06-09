@@ -1,0 +1,6 @@
+# config/meta.yml
+
+meta_product_name: "Daily Sneakers"
+meta_title: "Daily Sneakers - Sneakers shopping made easy!"
+meta_description: "Welcome to Daily Sneaker! We are the leading website for comparing sneaker prices. We offer the best prices on the latest sneakers from all the major brands. Whether you're looking for Nike, Adidas, Jordan, or any other brand, we have the best prices on the latest sneakers."
+meta_image: "cover.png" # should exist in `app/assets/images/`
