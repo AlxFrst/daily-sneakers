@@ -31,7 +31,7 @@
 <div class="index-card-block">
   <h5><%= link_to "#{sneaker.brand} #{sneaker.model}", sneaker_path(sneaker) %></h5>
   <div class="index-card-bottom">
-    <p class="index-card-price"><%= sneaker.prices.map { |i| i.price.to_i }.max %>€</p>
+    <p class="index-card-price"><%= sneaker.prices.map { |i| i.price.to_i }.min %>€</p>
     <div class="index-card-shared">
       <i class="fa-solid fa-heart"></i>
       <i class="fa-solid fa-share-nodes"></i>
