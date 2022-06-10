@@ -25,7 +25,6 @@
           <th>Purchase price</th>
           <th>Size</th>
           <th>Actual price</th>
-          <th>Variation</th>
         </tr>
       </thead>
       <tbody>
@@ -68,7 +67,6 @@
           </td>
           <td><%= snk.size %></td>
           <td><%= snk.sneaker.prices.last.price %>€</td>
-          <td>UP</td>
           <td><i class="fas fa-pen"></i></td>
           <td>
             <%= link_to sneaker_collection_path(snk.id, Collection.find_by(user_id: current_user.id)), method: :delete do%>

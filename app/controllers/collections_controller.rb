@@ -6,6 +6,7 @@ class CollectionsController < ApplicationController
 
   def create
     size = params['size']
+    @x_total = params['x_total']
     @sneaker = Sneaker.find(params[:sneaker_id])
     @user = current_user
     @collection = Collection.new(user: @user, sneaker: @sneaker, condition: Condition.first, status: Status.first, size: size)
