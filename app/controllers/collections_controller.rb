@@ -5,9 +5,10 @@ class CollectionsController < ApplicationController
   end
 
   def create
+    size = params['size']
     @sneaker = Sneaker.find(params[:sneaker_id])
     @user = current_user
-    @collection = Collection.new(user: @user, sneaker: @sneaker, condition: Condition.first, status: Status.first)
+    @collection = Collection.new(user: @user, sneaker: @sneaker, condition: Condition.first, status: Status.first, size: size)
     if @collection.save!
       flash[:notice] = "Sneaker added to your collection!"
       redirect_to collection_path

@@ -52,7 +52,7 @@
           <%= link_to sneaker_wishlists_path(@sneaker), method: :post, remote: true do %>
             <p class='wishlist'>Add to wishlist <i class="fa-solid fa-plus"></i></p>
           <% end %>
-          <%= link_to sneaker_collections_path(@sneaker), method: :post, remote: true do %>
+          <%= link_to sneaker_collections_path(@sneaker, size: size), method: :post do %>
             <p class='collection'>Add to collection <i class="fa-solid fa-plus"></i></p>
           <% end %>
         </div>
