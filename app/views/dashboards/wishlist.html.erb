@@ -67,7 +67,6 @@
           </td>
           <td><%= snk.sneaker.release %></td>
           <td><%= snk.sneaker.prices.last.price %>€</td>
-          <td><i class="fas fa-pen"></i></td>
           <td>
             <%= link_to sneaker_wishlist_path(snk.id, Wishlist.find_by(user_id: current_user.id)), method: :delete, remote: true do%>
               <i class="fas fa-trash-alt"></i>
