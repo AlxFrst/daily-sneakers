@@ -60,7 +60,7 @@
     var(--searchInputButtonPaddingHorizontal);
   transition: 0.3s;
   border: none;
-  border-radius: 12px;
+  border-radius: 6%;
   padding: 10px;
 }
 
@@ -137,7 +137,7 @@ input[type="submit"] {
   background-color: white;
   padding: 10px;
   padding: 10px 15px;
-  border-radius: 18px;
+  border-radius: 4px;
   font-size: 14px;
   width: 400px;
 }
@@ -145,7 +145,7 @@ input[type="submit"] {
 #search_query{
   background-color: #F2F4F8;
   margin-right: 15px;
-  border-radius: 18px;
+  border-radius: 4px;
 }
 .nav-bar-user{
   display: flex;
@@ -157,4 +157,7 @@ input[type="submit"] {
 }
 .dropdown{
   cursor: pointer;
+}
+div.navbar.navbar-expand-sm.navbar-light.fixed-top.navbar-lewagon > div > a > img{
+  width: 200px;
 }

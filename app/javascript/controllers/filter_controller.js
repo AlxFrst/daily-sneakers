@@ -27,4 +27,23 @@ export default class extends Controller {
     const max = document.querySelectorAll('.range-slider input')[1].value
     window.location.href = `/sneakers?brands=${brands.toString()}&sellers=${sellers.toString()}&min=${min}&max=${max}`;
   }
+
+  deletePrice() {
+    const url = window.location.href.replace(/\min=\d*&max=\d*/, 'min=0&max=10000')
+    window.location.replace(url)
+  }
+
+  deleteBrand(event) {
+    const brand = `\\,*${event.currentTarget.innerText.replace(' ', '%20')}`
+    const regex = new RegExp(brand, 'i')
+    const url = window.location.href.replace(regex, '')
+    window.location.replace(url)
+  }
+
+  deleteSeller(event) {
+    const seller = `\\,*${event.currentTarget.innerText}`
+    const regex = new RegExp(seller, 'i')
+    const url = window.location.href.replace(regex, '')
+    window.location.replace(url)
+  }
 }

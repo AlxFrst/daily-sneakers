@@ -1,11 +1,26 @@
 <section data-controller="filter" class="container custom-margin">
   <div class="index-head mb-3">
-  <% if @sneakers.count.is_a? Integer %>
-    <h3> <%= @sneakers.count %> Results</h3>
-  <% else %>
-    <h3> <%= @sneakers.count.keys.count %> Results</h3>
-  <% end %>
-    <button data-action="click->filter#revealContent"><i class="fas fa-filter"></i>Filter</button>
+    <% if @sneakers.count.is_a? Integer %>
+      <h3> <%= @sneakers.count %> Results</h3>
+    <% else %>
+      <h3> <%= @sneakers.count.keys.count %> Results</h3>
+    <% end %>
+    <div class="d-flex justify-content-right">
+      <% if params.keys.include?('min') && (params['max'].to_i < 10000) %>
+        <span class="pillules price" data-action='click->filter#deletePrice'>Between <%= params['min'] %>$ and <%= params['max'] %>$</span>
+      <% end %>
+      <% if params.keys.include?('brands') %>
+        <% params['brands'].split(',').each do |i| %>
+          <span class="pillules" data-action='click->filter#deleteBrand'><%= i %></span>
+        <% end %>
+      <% end %>
+      <% if params.keys.include?('sellers') %>
+        <% params['sellers'].split(',').each do |i| %>
+          <span class='pillules' data-action='click->filter#deleteSeller'><%= i %></span>
+        <% end %>
+      <% end %>
+      <button data-action="click->filter#revealContent"><i class="fas fa-filter"></i>Filter</button>
+    </div>
   </div>
   <div class="index-filter d-none" data-filter-target="content">
     <%= render 'shared/filter' %>
@@ -14,7 +29,7 @@
 <div class="container">
   <section class="row">
     <% @sneakers_page.each do |sneaker| %>
-        <%= render 'shared/indexcard', sneaker: sneaker %>
+      <%= render 'shared/indexcard', sneaker: sneaker %>
     <% end %>
     <div class="index-pagination">
       <%= paginate @sneakers_page %>
